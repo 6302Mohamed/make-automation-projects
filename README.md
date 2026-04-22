@@ -4,7 +4,7 @@ A portfolio of business automation workflows built with Make.com, focused on sol
 
 ## What this repository contains
 
-This repository documents automation projects built with Make.com using practical business scenarios. Each project includes its own blueprint, screenshots, notes, and implementation summary.
+This repository documents practical automation projects built with Make.com. Each project includes its own blueprint, explanation, and implementation notes.
 
 ## Core skills demonstrated
 
@@ -16,10 +16,10 @@ This repository documents automation projects built with Make.com using practica
 - Google Forms and Google Sheets integrations
 - Audit-friendly status updates
 
-## Project list
+## Projects
 
 ### 1. Agency Intake Routing
-An agency request intake workflow that:
+A workflow that:
 - captures form submissions
 - validates required fields
 - handles invalid submissions
@@ -28,15 +28,3 @@ An agency request intake workflow that:
 - updates records with workflow status
 
 More projects will be added as the repository grows.
-
-## Repository structure
-
-Each project is stored in its own folder with:
-- `README.md` for project explanation
-- `blueprint/` for exported Make scenario JSON
-- `screenshots/` for scenario visuals
-- `docs/` for notes, assumptions, and workflow design
-
-## Notes
-
-All exported blueprints in this repository should use sanitized placeholder values for emails, company names, and other sensitive details.
