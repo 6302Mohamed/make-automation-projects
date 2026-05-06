@@ -12,18 +12,19 @@
 
 ## Overview
 
-This repository contains real workflow automation projects built with Make.com around practical business use cases.
+This repository contains practical workflow automation projects built with Make.com around real business use cases.
 
-The goal of this repository is not just to store exported scenarios, but to document how each automation is designed, structured, and implemented. Each project is treated as a standalone workflow case with its own notes, blueprint, and supporting documentation.
+The purpose of this repository is not just to store exported scenarios, but to document how each workflow is designed, structured, and implemented. Each project is treated as a standalone automation case with its own README, notes, blueprint, and supporting material where relevant.
 
-As this repository grows, it will include automations across different patterns such as:
+As the repository grows, it will cover workflow patterns such as:
 
 - intake and request routing
 - notifications and escalations
 - validation and error handling
 - duplicate detection
-- approval flows
-- spreadsheet-driven workflows
+- invoice and order workflows
+- spreadsheet-driven operations
+- Airtable-supported record management
 - operational business process automation
 
 ---
@@ -52,6 +53,20 @@ It includes:
 - routing by priority and category
 - audit-friendly status updates
 
+### Project 02 — E-commerce Order Processing, Invoice Logging & Team Notification
+A Make.com workflow for processing paid e-commerce orders through a custom webhook and logging them into structured storage.
+
+It includes:
+- required field validation
+- invalid payload logging
+- duplicate order detection
+- order header logging
+- line-item iteration and logging
+- Airtable invoice record creation
+- buyer confirmation email
+- Slack team notification
+- Telegram fallback alerting
+
 More projects will be added over time.
 
 ---
@@ -69,12 +84,14 @@ This repository serves as:
 
 ## Notes
 
-Public project files in this repository should use sanitized placeholders for sensitive values such as:
+Public project files in this repository use sanitized placeholders for sensitive values such as:
 
 - email addresses
 - company names
 - private sheet references
 - organization-specific details
+- webhook URLs
+- tokens and connection details
 
 Replace those values with your own environment-specific settings before using any blueprint in production.
 
@@ -82,5 +99,5 @@ Replace those values with your own environment-specific settings before using an
 
 ## Author
 
-**Mohamed Yousuf Husein**  
+**Mohamed Yousuf Hussein**  
 AI Agent Engineer | Automation Builder | Workflow Designer
