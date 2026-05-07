@@ -1,4 +1,4 @@
-# Project 02 — E-commerce Order Processing, Invoice Logging & Team Notification
+# Project 02 | E-commerce Order Processing, Invoice Logging & Team Notification
 
 A Make.com workflow that receives paid e-commerce orders through a webhook, validates incoming payloads, prevents duplicate processing, logs order headers and individual line items, creates invoice records in Airtable, sends buyer follow-up emails, and notifies internal teams through Slack with Telegram fallback support.
 
