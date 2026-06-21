@@ -1,4 +1,29 @@
+<div align="center">
+
 # AI Lead Review & Follow-Up System
+
+### Human-in-the-loop AI automation for lead intake, review, follow-up, and audit logging.
+
+<p>
+  <img src="https://img.shields.io/badge/Make.com-6D00CC?style=for-the-badge&logo=make&logoColor=white" alt="Make.com" />
+  <img src="https://img.shields.io/badge/Airtable-18BFFF?style=for-the-badge&logo=airtable&logoColor=white" alt="Airtable" />
+  <img src="https://img.shields.io/badge/Tally-000000?style=for-the-badge&logo=tally&logoColor=white" alt="Tally" />
+  <img src="https://img.shields.io/badge/Groq-F55036?style=for-the-badge&logo=groq&logoColor=white" alt="Groq" />
+  <img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
+  <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack" />
+</p>
+
+<p>
+  <strong>AI Drafting</strong> ·
+  <strong>Human Review</strong> ·
+  <strong>Safe Follow-Up</strong> ·
+  <strong>Error Handling</strong> ·
+  <strong>Audit Logging</strong>
+</p>
+
+</div>
+
+---
 
 ## Overview
 
@@ -7,6 +32,7 @@ The **AI Lead Review & Follow-Up System** is a human-in-the-loop AI automation p
 The system captures incoming leads, validates required information, generates AI-assisted draft replies, routes each draft for human review, and safely processes the reviewer’s decision.
 
 AI is used to support classification, summarization, drafting, rewriting, and rejection-intent routing. Final customer-facing actions remain controlled by a human reviewer.
+
 
 ---
 
