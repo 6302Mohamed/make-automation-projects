@@ -1,0 +1,4776 @@
+  {
+  "name": "Scenario 1 - Lead Intake and AI Draft (Sanitized)",
+  "flow": [
+    {
+      "id": 1,
+      "module": "tally:watchNewResponse",
+      "version": 1,
+      "parameters": {
+        "__IMTHOOK__": "<TALLY_WEBHOOK_ID>"
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 600
+        },
+        "restore": {
+          "parameters": {
+            "__IMTHOOK__": "<TALLY_WEBHOOK_ID>"
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTHOOK__",
+            "type": "hook:tally",
+            "label": "Webhook",
+            "required": true
+          }
+        ],
+        "interface": [
+          {
+            "name": "eventId",
+            "type": "text",
+            "label": "Event ID"
+          },
+          {
+            "name": "responseId",
+            "type": "text",
+            "label": "Response ID"
+          },
+          {
+            "name": "submissionId",
+            "type": "text",
+            "label": "Submission ID"
+          },
+          {
+            "name": "respondentId",
+            "type": "text",
+            "label": "Respondent ID"
+          },
+          {
+            "name": "formId",
+            "type": "text",
+            "label": "Form ID"
+          },
+          {
+            "name": "formName",
+            "type": "text",
+            "label": "Form Name"
+          },
+          {
+            "name": "createdAt",
+            "type": "date",
+            "label": "Created at"
+          },
+          {
+            "name": "fields",
+            "spec": [
+              {
+                "name": "What is your full name?",
+                "type": "text"
+              },
+              {
+                "name": "What email should we use to contact you?",
+                "type": "email"
+              },
+              {
+                "name": "Phone?",
+                "type": "text"
+              },
+              {
+                "name": "Company name?",
+                "type": "text"
+              },
+              {
+                "name": "What do you need help with?",
+                "spec": {
+                  "type": "text"
+                },
+                "type": "array"
+              },
+              {
+                "name": "What budget range are you considering?",
+                "spec": {
+                  "type": "text"
+                },
+                "type": "array"
+              },
+              {
+                "name": "When would you like this completed?",
+                "spec": {
+                  "type": "text"
+                },
+                "type": "array"
+              },
+              {
+                "name": "Please describe what you want to automate or improve.",
+                "type": "text"
+              },
+              {
+                "name": "How would you prefer we follow up?",
+                "spec": {
+                  "type": "text"
+                },
+                "type": "array"
+              },
+              {
+                "name": "lead_source",
+                "type": "text"
+              },
+              {
+                "name": "utm_source",
+                "type": "text"
+              },
+              {
+                "name": "utm_medium",
+                "type": "text"
+              },
+              {
+                "name": "utm_campaign",
+                "type": "text"
+              }
+            ],
+            "type": "collection",
+            "label": "Fields"
+          },
+          {
+            "name": "fieldsById",
+            "spec": [
+              {
+                "name": "question_6x2QXJ",
+                "type": "text",
+                "label": "What is your full name?"
+              },
+              {
+                "name": "question_7Z298R",
+                "type": "email",
+                "label": "What email should we use to contact you?"
+              },
+              {
+                "name": "question_bOx40Z",
+                "type": "text",
+                "label": "Phone?"
+              },
+              {
+                "name": "question_A8LbVz",
+                "type": "text",
+                "label": "Company name?"
+              },
+              {
+                "name": "question_BBkbPK",
+                "spec": {
+                  "type": "text"
+                },
+                "type": "array",
+                "label": "What do you need help with?"
+              },
+              {
+                "name": "question_kZ6RVe",
+                "spec": {
+                  "type": "text"
+                },
+                "type": "array",
+                "label": "What budget range are you considering?"
+              },
+              {
+                "name": "question_v2yxQD",
+                "spec": {
+                  "type": "text"
+                },
+                "type": "array",
+                "label": "When would you like this completed?"
+              },
+              {
+                "name": "question_K0lBqV",
+                "type": "text",
+                "label": "Please describe what you want to automate or improve."
+              },
+              {
+                "name": "question_L0WMQp",
+                "spec": {
+                  "type": "text"
+                },
+                "type": "array",
+                "label": "How would you prefer we follow up?"
+              },
+              {
+                "name": "question_pVBPlB_72621bdc-1307-41ca-b47b-758fc8420704",
+                "type": "text",
+                "label": "lead_source"
+              },
+              {
+                "name": "question_pVBPlB_b4e6cbfb-e144-4e31-8023-1e0c4d032287",
+                "type": "text",
+                "label": "utm_source"
+              },
+              {
+                "name": "question_pVBPlB_501a903e-7efa-4d72-b401-fd5dc6fbf534",
+                "type": "text",
+                "label": "utm_medium"
+              },
+              {
+                "name": "question_pVBPlB_8961584a-3046-47f8-b93e-69db86c52ae5",
+                "type": "text",
+                "label": "utm_campaign"
+              }
+            ],
+            "type": "collection",
+            "label": "Fields by ID"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "builtin:BasicRouter",
+      "version": 1,
+      "parameters": {
+        "else": 0
+      },
+      "mapper": null,
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 600
+        }
+      },
+      "routes": [
+        {
+          "flow": [
+            {
+              "id": 3,
+              "module": "airtable:ActionCreateRecord",
+              "version": 3,
+              "parameters": {
+                "__IMTCONN__": "<CONNECTION_ID>"
+              },
+              "filter": {
+                "name": "Invalid Route",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.fieldsById.question_6x2QXJ}}",
+                      "o": "notexist"
+                    },
+                    {
+                      "a": "{{1.fieldsById.question_7Z298R}}",
+                      "o": "notexist"
+                    },
+                    {
+                      "a": "{{1.fieldsById.question_K0lBqV}}",
+                      "o": "notexist"
+                    },
+                    {
+                      "a": "{{1.fields.`What do you need help with?`}}",
+                      "o": "notexist"
+                    }
+                  ]
+                ]
+              },
+              "mapper": {
+                "base": "<AIRTABLE_BASE_ID>",
+                "table": "<AIRTABLE_TABLE_ID>",
+                "record": {
+                  "fld8wqAQdB0lKsrae": "Error",
+                  "fldA3KBmmA2lvdrmM": "{{1.fieldsById.question_kZ6RVe}}",
+                  "fldNuIICirtqKAMim": "{{1.fieldsById.question_bOx40Z}}",
+                  "fldTpIBKulLwD05p4": "{{1.fieldsById.question_BBkbPK}}",
+                  "fldUoMOm8Wvk47krk": "{{1.fieldsById.question_v2yxQD}}",
+                  "fldYzIAkyiH77GjSl": "{{1.fieldsById.question_7Z298R}}",
+                  "fldhIkX4xmRXrKU9t": "{{1.fieldsById.question_K0lBqV}}",
+                  "fldjnPyKqybJj9VeG": "{{1.fieldsById.question_L0WMQp}}",
+                  "fldki3RiDMx8wY1n3": "{{1.fieldsById.question_6x2QXJ}}",
+                  "fldl89tnn6Fl1AFxk": "Invalid submission: missing required field. Automation stopped before AI drafting.",
+                  "fldnNd5Wfds9rQ3zi": "{{1.fieldsById.question_A8LbVz}}",
+                  "fldzRFFqZtBZxzkfz": "{{1.fieldsById.`question_pVBPlB_72621bdc-1307-41ca-b47b-758fc8420704`}}"
+                },
+                "typecast": false,
+                "useColumnId": false
+              },
+              "metadata": {
+                "designer": {
+                  "x": 600,
+                  "y": 0
+                },
+                "restore": {
+                  "expect": {
+                    "base": {
+                      "label": "AI Lead Review & Follow-Up System"
+                    },
+                    "table": {
+                      "label": "Lead",
+                      "nested": [
+                        {
+                          "name": "record",
+                          "spec": [
+                            {
+                              "name": "fldki3RiDMx8wY1n3",
+                              "type": "text",
+                              "label": "Full Name"
+                            },
+                            {
+                              "name": "fldYzIAkyiH77GjSl",
+                              "type": "text",
+                              "label": "Email"
+                            },
+                            {
+                              "name": "fldNuIICirtqKAMim",
+                              "type": "text",
+                              "label": "Phone"
+                            },
+                            {
+                              "name": "fldnNd5Wfds9rQ3zi",
+                              "type": "text",
+                              "label": "Company"
+                            },
+                            {
+                              "name": "fldzRFFqZtBZxzkfz",
+                              "type": "text",
+                              "label": "Lead Source"
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldTpIBKulLwD05p4",
+                              "type": "select",
+                              "label": "Service Interest",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Workflow automation",
+                                  "value": "Workflow automation"
+                                },
+                                {
+                                  "label": "AI automation",
+                                  "value": "AI automation"
+                                },
+                                {
+                                  "label": "CRM / Airtable setup",
+                                  "value": "CRM / Airtable setup"
+                                },
+                                {
+                                  "label": "Lead follow-up system",
+                                  "value": "Lead follow-up system"
+                                },
+                                {
+                                  "label": "Ecommerce automation",
+                                  "value": "Ecommerce automation"
+                                },
+                                {
+                                  "label": "Not sure yet",
+                                  "value": "Not sure yet"
+                                },
+                                {
+                                  "label": "Other",
+                                  "value": "Other"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldA3KBmmA2lvdrmM",
+                              "type": "select",
+                              "label": "Budget Range",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Under $300",
+                                  "value": "Under $300"
+                                },
+                                {
+                                  "label": "$300 - $750",
+                                  "value": "$300 - $750"
+                                },
+                                {
+                                  "label": "$750 - $1,500",
+                                  "value": "$750 - $1,500"
+                                },
+                                {
+                                  "label": "$1,500+",
+                                  "value": "$1,500+"
+                                },
+                                {
+                                  "label": "Not sure yet",
+                                  "value": "Not sure yet"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldUoMOm8Wvk47krk",
+                              "type": "select",
+                              "label": "Timeline",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "ASAP",
+                                  "value": "ASAP"
+                                },
+                                {
+                                  "label": "This week",
+                                  "value": "This week"
+                                },
+                                {
+                                  "label": "This month",
+                                  "value": "This month"
+                                },
+                                {
+                                  "label": "Flexible",
+                                  "value": "Flexible"
+                                },
+                                {
+                                  "label": "Just exploring",
+                                  "value": "Just exploring"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldjnPyKqybJj9VeG",
+                              "type": "select",
+                              "label": "Preferred Contact Method",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Email",
+                                  "value": "Email"
+                                },
+                                {
+                                  "label": "WhatsApp",
+                                  "value": "WhatsApp"
+                                },
+                                {
+                                  "label": "Phone call",
+                                  "value": "Phone call"
+                                },
+                                {
+                                  "label": "No preference",
+                                  "value": "No preference"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "name": "fldhIkX4xmRXrKU9t",
+                              "type": "text",
+                              "label": "Original Message",
+                              "multiline": true
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldl98BClCcxf4SxV",
+                              "type": "select",
+                              "label": "Lead Category",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Sales Inquiry",
+                                  "value": "Sales Inquiry"
+                                },
+                                {
+                                  "label": "Support Request",
+                                  "value": "Support Request"
+                                },
+                                {
+                                  "label": "Partnership",
+                                  "value": "Partnership"
+                                },
+                                {
+                                  "label": "Pricing Question",
+                                  "value": "Pricing Question"
+                                },
+                                {
+                                  "label": "Urgent Request",
+                                  "value": "Urgent Request"
+                                },
+                                {
+                                  "label": "Low Priority",
+                                  "value": "Low Priority"
+                                },
+                                {
+                                  "label": "Not Relevant",
+                                  "value": "Not Relevant"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldUtNB1dDORw9BWw",
+                              "type": "select",
+                              "label": "Priority",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "High",
+                                  "value": "High"
+                                },
+                                {
+                                  "label": "Medium",
+                                  "value": "Medium"
+                                },
+                                {
+                                  "label": "Low",
+                                  "value": "Low"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fld8wqAQdB0lKsrae",
+                              "type": "select",
+                              "label": "Lead Status",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "New",
+                                  "value": "New"
+                                },
+                                {
+                                  "label": "AI Draft Ready",
+                                  "value": "AI Draft Ready"
+                                },
+                                {
+                                  "label": "Pending Review",
+                                  "value": "Pending Review"
+                                },
+                                {
+                                  "label": "Approved",
+                                  "value": "Approved"
+                                },
+                                {
+                                  "label": "Needs Edit",
+                                  "value": "Needs Edit"
+                                },
+                                {
+                                  "label": "Rejected",
+                                  "value": "Rejected"
+                                },
+                                {
+                                  "label": "Sent",
+                                  "value": "Sent"
+                                },
+                                {
+                                  "label": "Error",
+                                  "value": "Error"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "name": "fldl89tnn6Fl1AFxk",
+                              "type": "text",
+                              "label": "Notes",
+                              "multiline": true
+                            },
+                            {
+                              "name": "fldmRBbHsoxlEZbcF",
+                              "type": "text",
+                              "label": "AI Drafts"
+                            },
+                            {
+                              "name": "fldfu3B5JGQ96o5Qd",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "AI Drafts 2"
+                            },
+                            {
+                              "name": "fldpgCHHmqc3eQ6xq",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "Review & Approval"
+                            },
+                            {
+                              "name": "fldQ1z733g2QpfG9H",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "Message Log"
+                            }
+                          ],
+                          "type": "collection",
+                          "label": "Record"
+                        }
+                      ]
+                    },
+                    "record": {
+                      "nested": {
+                        "fld8wqAQdB0lKsrae": {
+                          "mode": "edit"
+                        },
+                        "fldA3KBmmA2lvdrmM": {
+                          "mode": "edit"
+                        },
+                        "fldQ1z733g2QpfG9H": {
+                          "mode": "chose"
+                        },
+                        "fldTpIBKulLwD05p4": {
+                          "mode": "edit"
+                        },
+                        "fldUoMOm8Wvk47krk": {
+                          "mode": "edit"
+                        },
+                        "fldUtNB1dDORw9BWw": {
+                          "mode": "edit"
+                        },
+                        "fldfu3B5JGQ96o5Qd": {
+                          "mode": "chose"
+                        },
+                        "fldjnPyKqybJj9VeG": {
+                          "mode": "edit"
+                        },
+                        "fldl98BClCcxf4SxV": {
+                          "mode": "edit"
+                        },
+                        "fldpgCHHmqc3eQ6xq": {
+                          "mode": "chose"
+                        }
+                      }
+                    },
+                    "typecast": {
+                      "mode": "chose"
+                    },
+                    "useColumnId": {
+                      "mode": "chose"
+                    }
+                  },
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "__IMTCONN__",
+                    "type": "account:airtable3,airtable2",
+                    "label": "Connection",
+                    "required": true
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "base",
+                    "type": "select",
+                    "label": "Base",
+                    "required": true
+                  },
+                  {
+                    "name": "typecast",
+                    "type": "boolean",
+                    "label": "Smart links",
+                    "required": true
+                  },
+                  {
+                    "name": "useColumnId",
+                    "type": "boolean",
+                    "label": "Use Column ID",
+                    "required": true
+                  },
+                  {
+                    "name": "table",
+                    "type": "select",
+                    "label": "Table",
+                    "required": true
+                  },
+                  {
+                    "name": "record",
+                    "spec": [
+                      {
+                        "name": "fldki3RiDMx8wY1n3",
+                        "type": "text",
+                        "label": "Full Name"
+                      },
+                      {
+                        "name": "fldYzIAkyiH77GjSl",
+                        "type": "text",
+                        "label": "Email"
+                      },
+                      {
+                        "name": "fldNuIICirtqKAMim",
+                        "type": "text",
+                        "label": "Phone"
+                      },
+                      {
+                        "name": "fldnNd5Wfds9rQ3zi",
+                        "type": "text",
+                        "label": "Company"
+                      },
+                      {
+                        "name": "fldzRFFqZtBZxzkfz",
+                        "type": "text",
+                        "label": "Lead Source"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldTpIBKulLwD05p4",
+                        "type": "select",
+                        "label": "Service Interest"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldA3KBmmA2lvdrmM",
+                        "type": "select",
+                        "label": "Budget Range"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldUoMOm8Wvk47krk",
+                        "type": "select",
+                        "label": "Timeline"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldjnPyKqybJj9VeG",
+                        "type": "select",
+                        "label": "Preferred Contact Method"
+                      },
+                      {
+                        "name": "fldhIkX4xmRXrKU9t",
+                        "type": "text",
+                        "label": "Original Message"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldl98BClCcxf4SxV",
+                        "type": "select",
+                        "label": "Lead Category"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldUtNB1dDORw9BWw",
+                        "type": "select",
+                        "label": "Priority"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fld8wqAQdB0lKsrae",
+                        "type": "select",
+                        "label": "Lead Status"
+                      },
+                      {
+                        "name": "fldl89tnn6Fl1AFxk",
+                        "type": "text",
+                        "label": "Notes"
+                      },
+                      {
+                        "name": "fldmRBbHsoxlEZbcF",
+                        "type": "text",
+                        "label": "AI Drafts"
+                      },
+                      {
+                        "name": "fldfu3B5JGQ96o5Qd",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "AI Drafts 2"
+                      },
+                      {
+                        "name": "fldpgCHHmqc3eQ6xq",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Review & Approval"
+                      },
+                      {
+                        "name": "fldQ1z733g2QpfG9H",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Message Log"
+                      }
+                    ],
+                    "type": "collection",
+                    "label": "Record"
+                  }
+                ],
+                "interface": [
+                  {
+                    "name": "id",
+                    "type": "text",
+                    "label": "ID"
+                  },
+                  {
+                    "name": "createdTime",
+                    "type": "date",
+                    "label": "Created Time"
+                  },
+                  {
+                    "name": "Lead ID",
+                    "type": "number",
+                    "label": "Lead ID"
+                  },
+                  {
+                    "name": "Full Name",
+                    "type": "text",
+                    "label": "Full Name"
+                  },
+                  {
+                    "name": "Email",
+                    "type": "text",
+                    "label": "Email"
+                  },
+                  {
+                    "name": "Phone",
+                    "type": "text",
+                    "label": "Phone"
+                  },
+                  {
+                    "name": "Company",
+                    "type": "text",
+                    "label": "Company"
+                  },
+                  {
+                    "name": "Lead Source",
+                    "type": "text",
+                    "label": "Lead Source"
+                  },
+                  {
+                    "name": "Service Interest",
+                    "type": "text",
+                    "label": "Service Interest"
+                  },
+                  {
+                    "name": "Budget Range",
+                    "type": "text",
+                    "label": "Budget Range"
+                  },
+                  {
+                    "name": "Timeline",
+                    "type": "text",
+                    "label": "Timeline"
+                  },
+                  {
+                    "name": "Preferred Contact Method",
+                    "type": "text",
+                    "label": "Preferred Contact Method"
+                  },
+                  {
+                    "name": "Original Message",
+                    "type": "text",
+                    "label": "Original Message",
+                    "multiline": true
+                  },
+                  {
+                    "name": "Lead Category",
+                    "type": "text",
+                    "label": "Lead Category"
+                  },
+                  {
+                    "name": "Priority",
+                    "type": "text",
+                    "label": "Priority"
+                  },
+                  {
+                    "name": "Lead Status",
+                    "type": "text",
+                    "label": "Lead Status"
+                  },
+                  {
+                    "name": "Created At",
+                    "type": "date",
+                    "label": "Created At"
+                  },
+                  {
+                    "name": "Notes",
+                    "type": "text",
+                    "label": "Notes",
+                    "multiline": true
+                  },
+                  {
+                    "name": "AI Drafts",
+                    "type": "text",
+                    "label": "AI Drafts"
+                  },
+                  {
+                    "name": "AI Drafts 2",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "AI Drafts 2"
+                  },
+                  {
+                    "name": "Review & Approval",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Review & Approval"
+                  },
+                  {
+                    "name": "Message Log",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Message Log"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 13,
+              "module": "airtable:ActionCreateRecord",
+              "version": 3,
+              "parameters": {
+                "__IMTCONN__": "<CONNECTION_ID>"
+              },
+              "filter": {
+                "name": "Valid Route",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.fieldsById.question_6x2QXJ}}",
+                      "o": "exist"
+                    },
+                    {
+                      "a": "{{1.fieldsById.question_7Z298R}}",
+                      "o": "exist"
+                    },
+                    {
+                      "a": "{{1.fieldsById.question_K0lBqV}}",
+                      "o": "exist"
+                    },
+                    {
+                      "a": "{{1.fields.`What do you need help with?`}}",
+                      "o": "exist"
+                    }
+                  ]
+                ]
+              },
+              "mapper": {
+                "base": "<AIRTABLE_BASE_ID>",
+                "table": "<AIRTABLE_TABLE_ID>",
+                "record": {
+                  "fldA3KBmmA2lvdrmM": "{{get(1.fields.`What budget range are you considering?`; 1)}}",
+                  "fldNuIICirtqKAMim": "{{1.fieldsById.question_bOx40Z}}",
+                  "fldTpIBKulLwD05p4": "{{get(1.fieldsById.question_BBkbPK; 1)}}",
+                  "fldUoMOm8Wvk47krk": "{{get(1.fieldsById.question_v2yxQD; 1)}}",
+                  "fldYzIAkyiH77GjSl": "{{1.fieldsById.question_7Z298R}}",
+                  "fldhIkX4xmRXrKU9t": "{{1.fieldsById.question_K0lBqV}}",
+                  "fldjnPyKqybJj9VeG": "{{get(1.fieldsById.question_L0WMQp; 1)}}",
+                  "fldki3RiDMx8wY1n3": "{{1.fieldsById.question_6x2QXJ}}",
+                  "fldnNd5Wfds9rQ3zi": "{{1.fieldsById.question_A8LbVz}}",
+                  "fldzRFFqZtBZxzkfz": "{{1.fieldsById.`question_pVBPlB_72621bdc-1307-41ca-b47b-758fc8420704`}}"
+                },
+                "typecast": false,
+                "useColumnId": false
+              },
+              "metadata": {
+                "designer": {
+                  "x": 600,
+                  "y": 750
+                },
+                "restore": {
+                  "expect": {
+                    "base": {
+                      "label": "AI Lead Review & Follow-Up System"
+                    },
+                    "table": {
+                      "label": "Lead",
+                      "nested": [
+                        {
+                          "name": "record",
+                          "spec": [
+                            {
+                              "name": "fldki3RiDMx8wY1n3",
+                              "type": "text",
+                              "label": "Full Name"
+                            },
+                            {
+                              "name": "fldYzIAkyiH77GjSl",
+                              "type": "text",
+                              "label": "Email"
+                            },
+                            {
+                              "name": "fldNuIICirtqKAMim",
+                              "type": "text",
+                              "label": "Phone"
+                            },
+                            {
+                              "name": "fldnNd5Wfds9rQ3zi",
+                              "type": "text",
+                              "label": "Company"
+                            },
+                            {
+                              "name": "fldzRFFqZtBZxzkfz",
+                              "type": "text",
+                              "label": "Lead Source"
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldTpIBKulLwD05p4",
+                              "type": "select",
+                              "label": "Service Interest",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Workflow automation",
+                                  "value": "Workflow automation"
+                                },
+                                {
+                                  "label": "AI automation",
+                                  "value": "AI automation"
+                                },
+                                {
+                                  "label": "CRM / Airtable setup",
+                                  "value": "CRM / Airtable setup"
+                                },
+                                {
+                                  "label": "Lead follow-up system",
+                                  "value": "Lead follow-up system"
+                                },
+                                {
+                                  "label": "Ecommerce automation",
+                                  "value": "Ecommerce automation"
+                                },
+                                {
+                                  "label": "Not sure yet",
+                                  "value": "Not sure yet"
+                                },
+                                {
+                                  "label": "Other",
+                                  "value": "Other"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldA3KBmmA2lvdrmM",
+                              "type": "select",
+                              "label": "Budget Range",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Under $300",
+                                  "value": "Under $300"
+                                },
+                                {
+                                  "label": "$300 - $750",
+                                  "value": "$300 - $750"
+                                },
+                                {
+                                  "label": "$750 - $1,500",
+                                  "value": "$750 - $1,500"
+                                },
+                                {
+                                  "label": "$1,500+",
+                                  "value": "$1,500+"
+                                },
+                                {
+                                  "label": "Not sure yet",
+                                  "value": "Not sure yet"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldUoMOm8Wvk47krk",
+                              "type": "select",
+                              "label": "Timeline",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "ASAP",
+                                  "value": "ASAP"
+                                },
+                                {
+                                  "label": "This week",
+                                  "value": "This week"
+                                },
+                                {
+                                  "label": "This month",
+                                  "value": "This month"
+                                },
+                                {
+                                  "label": "Flexible",
+                                  "value": "Flexible"
+                                },
+                                {
+                                  "label": "Just exploring",
+                                  "value": "Just exploring"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldjnPyKqybJj9VeG",
+                              "type": "select",
+                              "label": "Preferred Contact Method",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Email",
+                                  "value": "Email"
+                                },
+                                {
+                                  "label": "WhatsApp",
+                                  "value": "WhatsApp"
+                                },
+                                {
+                                  "label": "Phone call",
+                                  "value": "Phone call"
+                                },
+                                {
+                                  "label": "No preference",
+                                  "value": "No preference"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "name": "fldhIkX4xmRXrKU9t",
+                              "type": "text",
+                              "label": "Original Message",
+                              "multiline": true
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldl98BClCcxf4SxV",
+                              "type": "select",
+                              "label": "Lead Category",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Sales Inquiry",
+                                  "value": "Sales Inquiry"
+                                },
+                                {
+                                  "label": "Support Request",
+                                  "value": "Support Request"
+                                },
+                                {
+                                  "label": "Partnership",
+                                  "value": "Partnership"
+                                },
+                                {
+                                  "label": "Pricing Question",
+                                  "value": "Pricing Question"
+                                },
+                                {
+                                  "label": "Urgent Request",
+                                  "value": "Urgent Request"
+                                },
+                                {
+                                  "label": "Low Priority",
+                                  "value": "Low Priority"
+                                },
+                                {
+                                  "label": "Not Relevant",
+                                  "value": "Not Relevant"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldUtNB1dDORw9BWw",
+                              "type": "select",
+                              "label": "Priority",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "High",
+                                  "value": "High"
+                                },
+                                {
+                                  "label": "Medium",
+                                  "value": "Medium"
+                                },
+                                {
+                                  "label": "Low",
+                                  "value": "Low"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fld8wqAQdB0lKsrae",
+                              "type": "select",
+                              "label": "Lead Status",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "New",
+                                  "value": "New"
+                                },
+                                {
+                                  "label": "AI Draft Ready",
+                                  "value": "AI Draft Ready"
+                                },
+                                {
+                                  "label": "Pending Review",
+                                  "value": "Pending Review"
+                                },
+                                {
+                                  "label": "Approved",
+                                  "value": "Approved"
+                                },
+                                {
+                                  "label": "Needs Edit",
+                                  "value": "Needs Edit"
+                                },
+                                {
+                                  "label": "Rejected",
+                                  "value": "Rejected"
+                                },
+                                {
+                                  "label": "Sent",
+                                  "value": "Sent"
+                                },
+                                {
+                                  "label": "Error",
+                                  "value": "Error"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "name": "fldl89tnn6Fl1AFxk",
+                              "type": "text",
+                              "label": "Notes",
+                              "multiline": true
+                            },
+                            {
+                              "name": "fldmRBbHsoxlEZbcF",
+                              "type": "text",
+                              "label": "AI Drafts"
+                            },
+                            {
+                              "name": "fldfu3B5JGQ96o5Qd",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "AI Drafts 2"
+                            },
+                            {
+                              "name": "fldpgCHHmqc3eQ6xq",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "Review & Approval"
+                            },
+                            {
+                              "name": "fldQ1z733g2QpfG9H",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "Message Log"
+                            }
+                          ],
+                          "type": "collection",
+                          "label": "Record"
+                        }
+                      ]
+                    },
+                    "record": {
+                      "nested": {
+                        "fld8wqAQdB0lKsrae": {
+                          "mode": "edit"
+                        },
+                        "fldA3KBmmA2lvdrmM": {
+                          "mode": "edit"
+                        },
+                        "fldQ1z733g2QpfG9H": {
+                          "mode": "chose"
+                        },
+                        "fldTpIBKulLwD05p4": {
+                          "mode": "edit"
+                        },
+                        "fldUoMOm8Wvk47krk": {
+                          "mode": "edit"
+                        },
+                        "fldUtNB1dDORw9BWw": {
+                          "mode": "edit"
+                        },
+                        "fldfu3B5JGQ96o5Qd": {
+                          "mode": "chose"
+                        },
+                        "fldjnPyKqybJj9VeG": {
+                          "mode": "edit"
+                        },
+                        "fldl98BClCcxf4SxV": {
+                          "mode": "edit"
+                        },
+                        "fldpgCHHmqc3eQ6xq": {
+                          "mode": "chose"
+                        }
+                      }
+                    },
+                    "typecast": {
+                      "mode": "chose"
+                    },
+                    "useColumnId": {
+                      "mode": "chose"
+                    }
+                  },
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "__IMTCONN__",
+                    "type": "account:airtable3,airtable2",
+                    "label": "Connection",
+                    "required": true
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "base",
+                    "type": "select",
+                    "label": "Base",
+                    "required": true
+                  },
+                  {
+                    "name": "typecast",
+                    "type": "boolean",
+                    "label": "Smart links",
+                    "required": true
+                  },
+                  {
+                    "name": "useColumnId",
+                    "type": "boolean",
+                    "label": "Use Column ID",
+                    "required": true
+                  },
+                  {
+                    "name": "table",
+                    "type": "select",
+                    "label": "Table",
+                    "required": true
+                  },
+                  {
+                    "name": "record",
+                    "spec": [
+                      {
+                        "name": "fldki3RiDMx8wY1n3",
+                        "type": "text",
+                        "label": "Full Name"
+                      },
+                      {
+                        "name": "fldYzIAkyiH77GjSl",
+                        "type": "text",
+                        "label": "Email"
+                      },
+                      {
+                        "name": "fldNuIICirtqKAMim",
+                        "type": "text",
+                        "label": "Phone"
+                      },
+                      {
+                        "name": "fldnNd5Wfds9rQ3zi",
+                        "type": "text",
+                        "label": "Company"
+                      },
+                      {
+                        "name": "fldzRFFqZtBZxzkfz",
+                        "type": "text",
+                        "label": "Lead Source"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldTpIBKulLwD05p4",
+                        "type": "select",
+                        "label": "Service Interest"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldA3KBmmA2lvdrmM",
+                        "type": "select",
+                        "label": "Budget Range"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldUoMOm8Wvk47krk",
+                        "type": "select",
+                        "label": "Timeline"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldjnPyKqybJj9VeG",
+                        "type": "select",
+                        "label": "Preferred Contact Method"
+                      },
+                      {
+                        "name": "fldhIkX4xmRXrKU9t",
+                        "type": "text",
+                        "label": "Original Message"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldl98BClCcxf4SxV",
+                        "type": "select",
+                        "label": "Lead Category"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldUtNB1dDORw9BWw",
+                        "type": "select",
+                        "label": "Priority"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fld8wqAQdB0lKsrae",
+                        "type": "select",
+                        "label": "Lead Status"
+                      },
+                      {
+                        "name": "fldl89tnn6Fl1AFxk",
+                        "type": "text",
+                        "label": "Notes"
+                      },
+                      {
+                        "name": "fldmRBbHsoxlEZbcF",
+                        "type": "text",
+                        "label": "AI Drafts"
+                      },
+                      {
+                        "name": "fldfu3B5JGQ96o5Qd",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "AI Drafts 2"
+                      },
+                      {
+                        "name": "fldpgCHHmqc3eQ6xq",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Review & Approval"
+                      },
+                      {
+                        "name": "fldQ1z733g2QpfG9H",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Message Log"
+                      }
+                    ],
+                    "type": "collection",
+                    "label": "Record"
+                  }
+                ],
+                "interface": [
+                  {
+                    "name": "id",
+                    "type": "text",
+                    "label": "ID"
+                  },
+                  {
+                    "name": "createdTime",
+                    "type": "date",
+                    "label": "Created Time"
+                  },
+                  {
+                    "name": "Lead ID",
+                    "type": "number",
+                    "label": "Lead ID"
+                  },
+                  {
+                    "name": "Full Name",
+                    "type": "text",
+                    "label": "Full Name"
+                  },
+                  {
+                    "name": "Email",
+                    "type": "text",
+                    "label": "Email"
+                  },
+                  {
+                    "name": "Phone",
+                    "type": "text",
+                    "label": "Phone"
+                  },
+                  {
+                    "name": "Company",
+                    "type": "text",
+                    "label": "Company"
+                  },
+                  {
+                    "name": "Lead Source",
+                    "type": "text",
+                    "label": "Lead Source"
+                  },
+                  {
+                    "name": "Service Interest",
+                    "type": "text",
+                    "label": "Service Interest"
+                  },
+                  {
+                    "name": "Budget Range",
+                    "type": "text",
+                    "label": "Budget Range"
+                  },
+                  {
+                    "name": "Timeline",
+                    "type": "text",
+                    "label": "Timeline"
+                  },
+                  {
+                    "name": "Preferred Contact Method",
+                    "type": "text",
+                    "label": "Preferred Contact Method"
+                  },
+                  {
+                    "name": "Original Message",
+                    "type": "text",
+                    "label": "Original Message",
+                    "multiline": true
+                  },
+                  {
+                    "name": "Lead Category",
+                    "type": "text",
+                    "label": "Lead Category"
+                  },
+                  {
+                    "name": "Priority",
+                    "type": "text",
+                    "label": "Priority"
+                  },
+                  {
+                    "name": "Lead Status",
+                    "type": "text",
+                    "label": "Lead Status"
+                  },
+                  {
+                    "name": "Created At",
+                    "type": "date",
+                    "label": "Created At"
+                  },
+                  {
+                    "name": "Notes",
+                    "type": "text",
+                    "label": "Notes",
+                    "multiline": true
+                  },
+                  {
+                    "name": "AI Drafts",
+                    "type": "text",
+                    "label": "AI Drafts"
+                  },
+                  {
+                    "name": "AI Drafts 2",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "AI Drafts 2"
+                  },
+                  {
+                    "name": "Review & Approval",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Review & Approval"
+                  },
+                  {
+                    "name": "Message Log",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Message Log"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 12,
+              "module": "json:CreateJSON",
+              "version": 1,
+              "parameters": {
+                "type": 415902,
+                "space": ""
+              },
+              "mapper": {
+                "model": "llama-3.1-8b-instant",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are an assistant helping a business review new leads.\r\n\r\nYour job is to classify the lead, estimate priority, summarize the request, and draft a short follow-up reply for human review.\r\n\r\n- Do not make promises the business has not confirmed.\r\n- Do not say the project is accepted.\r\n- Do not mention AI.\r\n- Do not include private contact details.\r\n- Return only valid JSON.\r\n- Do not wrap the JSON in markdown.\r\n- Do not use ```json code fences.\r\n- Do not include any explanation before or after the JSON.\r\n\r\nAdapt draft_reply to the Preferred Contact Method:\r\n\r\n- Email: Write a professional email-style reply with a greeting and clear next step.\r\n- WhatsApp: Write a shorter, conversational message suitable for WhatsApp.\r\n- Phone call: Do not write a full email. Write a short internal call-opening script or callback message that a human can use.\r\n- No preference: Write a neutral professional reply suitable for email fallback.\r\n- Missing preferred method: Write a neutral professional reply suitable for human review."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Return JSON with exactly these keys:\r\ncategory, priority, summary, draft_reply, confidence_notes\r\n\r\nAllowed category values:\r\nSales Inquiry, Support Request, Partnership, Pricing Question, Urgent Request, Low Priority, Not Relevant\r\n\r\nAllowed priority values:\r\nHigh, Medium, Low\r\n\r\nRules:\r\n- category must be one of the allowed category values.\r\n- priority must be one of the allowed priority values.\r\n- summary must be 1–2 short sentences.\r\n- draft_reply must match the Preferred Contact Method.\r\n- confidence_notes must briefly explain any uncertainty.\r\n- Return valid JSON only.\r\n\r\nLead details:\r\nFull Name: {{13.`Full Name`}}\r\nCompany: {{13.Company}}\r\nService Interest: {{13.`Service Interest`}}\r\nBudget Range: {{13.`Budget Range`}}\r\nTimeline: {{13.Timeline}}\r\nPreferred Contact Method: {{13.`Preferred Contact Method`}}\r\nLead Source: {{13.`Lead Source`}}\r\nOriginal Message: {{13.`Original Message`}}"
+                  }
+                ],
+                "temperature": "0.5"
+              },
+              "metadata": {
+                "designer": {
+                  "x": 900,
+                  "y": 750
+                },
+                "restore": {
+                  "expect": {
+                    "messages": {
+                      "mode": "chose",
+                      "items": [
+                        null,
+                        null
+                      ]
+                    }
+                  },
+                  "parameters": {
+                    "type": {
+                      "label": "My data structure"
+                    },
+                    "space": {
+                      "label": "Empty"
+                    }
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "type",
+                    "type": "udt",
+                    "label": "Data structure",
+                    "required": true
+                  },
+                  {
+                    "name": "space",
+                    "type": "select",
+                    "label": "Indentation",
+                    "validate": {
+                      "enum": [
+                        "tab",
+                        "2",
+                        "4"
+                      ]
+                    }
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "model",
+                    "type": "text",
+                    "label": "Model",
+                    "required": true
+                  },
+                  {
+                    "name": "temperature",
+                    "type": "number",
+                    "label": "Temperature",
+                    "required": true
+                  },
+                  {
+                    "name": "messages",
+                    "spec": {
+                      "name": "value",
+                      "spec": [
+                        {
+                          "name": "role",
+                          "type": "text",
+                          "label": null,
+                          "required": true
+                        },
+                        {
+                          "name": "content",
+                          "type": "text",
+                          "label": null,
+                          "required": true
+                        }
+                      ],
+                      "type": "collection",
+                      "required": true,
+                      "sequence": true
+                    },
+                    "type": "array",
+                    "label": "Messages",
+                    "required": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 7,
+              "module": "http:MakeRequest",
+              "version": 4,
+              "parameters": {
+                "tlsType": "",
+                "apiKeyKeychain": "<API_KEYCHAIN_ID>",
+                "authenticationType": "apiKey"
+              },
+              "mapper": {
+                "url": "https://api.groq.com/openai/v1/chat/completions",
+                "method": "post",
+                "contentType": "json",
+                "inputMethod": "jsonString",
+                "shareCookies": false,
+                "parseResponse": true,
+                "allowRedirects": true,
+                "stopOnHttpError": true,
+                "jsonStringBodyContent": "{{12.json}}",
+                "requestCompressedContent": true
+              },
+              "metadata": {
+                "designer": {
+                  "x": 1200,
+                  "y": 750
+                },
+                "restore": {
+                  "expect": {
+                    "method": {
+                      "mode": "chose",
+                      "label": "POST"
+                    },
+                    "headers": {
+                      "mode": "chose"
+                    },
+                    "contentType": {
+                      "label": "application/jsonEnter data in the JSON format, as a string or using a data structure."
+                    },
+                    "inputMethod": {
+                      "label": "JSON stringEnter the JSON body as a raw text string. If values contain JSON reserved characters, you must escape them manually."
+                    },
+                    "shareCookies": {
+                      "mode": "chose"
+                    },
+                    "parseResponse": {
+                      "mode": "chose"
+                    },
+                    "allowRedirects": {
+                      "mode": "chose"
+                    },
+                    "paginationType": {
+                      "label": "Empty"
+                    },
+                    "queryParameters": {
+                      "mode": "chose"
+                    },
+                    "stopOnHttpError": {
+                      "mode": "chose"
+                    },
+                    "requestCompressedContent": {
+                      "mode": "chose"
+                    }
+                  },
+                  "parameters": {
+                    "tlsType": {
+                      "label": "Empty"
+                    },
+                    "apiKeyKeychain": "<API_KEYCHAIN_ID>",
+                    "authenticationType": {
+                      "label": "API keyUse when the service requires an API key in the header or query parameters."
+                    }
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "authenticationType",
+                    "type": "select",
+                    "label": "Authentication type",
+                    "required": true,
+                    "validate": {
+                      "enum": [
+                        "noAuth",
+                        "apiKey",
+                        "basicAuth",
+                        "oAuth"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "tlsType",
+                    "type": "select",
+                    "label": "Transport layer security (TLS)",
+                    "validate": {
+                      "enum": [
+                        "mTls",
+                        "tls"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "proxyKeychain",
+                    "type": "keychain:proxy",
+                    "label": "Proxy"
+                  },
+                  {
+                    "name": "apiKeyKeychain",
+                    "type": "keychain:apikeyauth",
+                    "label": "Credentials",
+                    "required": true
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "url",
+                    "type": "url",
+                    "label": "URL",
+                    "required": true
+                  },
+                  {
+                    "name": "method",
+                    "type": "select",
+                    "label": "Method",
+                    "required": true,
+                    "validate": {
+                      "enum": [
+                        "get",
+                        "head",
+                        "post",
+                        "put",
+                        "patch",
+                        "delete",
+                        "options"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "headers",
+                    "spec": {
+                      "name": "value",
+                      "spec": [
+                        {
+                          "name": "name",
+                          "type": "text",
+                          "label": "Name",
+                          "required": true,
+                          "validate": {
+                            "pattern": "^[-!#$%&'*+.^_`|~0-9A-Za-z]+$"
+                          }
+                        },
+                        {
+                          "name": "value",
+                          "type": "text",
+                          "label": "Value"
+                        }
+                      ],
+                      "type": "collection",
+                      "label": "Header"
+                    },
+                    "type": "array",
+                    "label": "Headers"
+                  },
+                  {
+                    "name": "queryParameters",
+                    "spec": {
+                      "name": "value",
+                      "spec": [
+                        {
+                          "name": "name",
+                          "type": "text",
+                          "label": "Name",
+                          "required": true
+                        },
+                        {
+                          "name": "value",
+                          "type": "text",
+                          "label": "Value"
+                        }
+                      ],
+                      "type": "collection",
+                      "label": "Parameter"
+                    },
+                    "type": "array",
+                    "label": "Query parameters"
+                  },
+                  {
+                    "name": "contentType",
+                    "type": "select",
+                    "label": "Body content type",
+                    "validate": {
+                      "enum": [
+                        "json",
+                        "multipart",
+                        "urlEncoded",
+                        "custom"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "parseResponse",
+                    "type": "boolean",
+                    "label": "Parse response",
+                    "required": true
+                  },
+                  {
+                    "name": "stopOnHttpError",
+                    "type": "boolean",
+                    "label": "Return error if HTTP request fails",
+                    "required": true
+                  },
+                  {
+                    "name": "timeout",
+                    "type": "uinteger",
+                    "label": "Timeout",
+                    "validate": {
+                      "max": 300,
+                      "min": 1
+                    }
+                  },
+                  {
+                    "name": "allowRedirects",
+                    "type": "boolean",
+                    "label": "Allow redirects",
+                    "required": true
+                  },
+                  {
+                    "name": "shareCookies",
+                    "type": "boolean",
+                    "label": "Share cookies with other HTTP modules",
+                    "required": true
+                  },
+                  {
+                    "name": "requestCompressedContent",
+                    "type": "boolean",
+                    "label": "Request compressed content",
+                    "required": true
+                  },
+                  {
+                    "name": "inputMethod",
+                    "type": "select",
+                    "label": "Body input method",
+                    "required": true,
+                    "validate": {
+                      "enum": [
+                        "dataStructure",
+                        "jsonString"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "jsonStringBodyContent",
+                    "type": "text",
+                    "label": "Body content",
+                    "required": true
+                  },
+                  {
+                    "name": "paginationType",
+                    "type": "select",
+                    "label": "Pagination type",
+                    "validate": {
+                      "enum": [
+                        "offsetBased",
+                        "pageBased",
+                        "urlBased",
+                        "tokenBased"
+                      ]
+                    }
+                  }
+                ],
+                "interface": [
+                  {
+                    "name": "data",
+                    "type": "any",
+                    "label": "Data"
+                  },
+                  {
+                    "name": "statusCode",
+                    "type": "number",
+                    "label": "Status Code"
+                  },
+                  {
+                    "name": "headers",
+                    "spec": [
+                      {
+                        "name": "content-length",
+                        "type": "text",
+                        "label": "Content-Length"
+                      },
+                      {
+                        "name": "content-encoding",
+                        "type": "text",
+                        "label": "Content-Encoding"
+                      },
+                      {
+                        "name": "content-type",
+                        "type": "text",
+                        "label": "Content-Type"
+                      },
+                      {
+                        "name": "server",
+                        "type": "text",
+                        "label": "Server"
+                      },
+                      {
+                        "name": "cache-control",
+                        "type": "text",
+                        "label": "Cache-Control"
+                      },
+                      {
+                        "name": "set-cookie",
+                        "spec": {
+                          "type": "text"
+                        },
+                        "type": "array",
+                        "label": "Set-Cookie"
+                      }
+                    ],
+                    "type": "collection",
+                    "label": "Headers"
+                  }
+                ]
+              },
+              "onerror": [
+                {
+                  "id": 29,
+                  "module": "airtable:ActionUpdateRecords",
+                  "version": 3,
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  },
+                  "mapper": {
+                    "id": "{{13.id}}",
+                    "base": "<AIRTABLE_BASE_ID>",
+                    "table": "<AIRTABLE_TABLE_ID>",
+                    "record": {
+                      "fld8wqAQdB0lKsrae": "Error",
+                      "fldl89tnn6Fl1AFxk": "AI drafting failed during Groq request. Human review required."
+                    },
+                    "typecast": false,
+                    "useColumnId": false
+                  },
+                  "metadata": {
+                    "designer": {
+                      "x": 1500,
+                      "y": 1200
+                    },
+                    "restore": {
+                      "expect": {
+                        "base": {
+                          "label": "AI Lead Review & Follow-Up System"
+                        },
+                        "table": {
+                          "label": "Lead"
+                        },
+                        "record": {
+                          "nested": {
+                            "fld8wqAQdB0lKsrae": {
+                              "mode": "edit"
+                            },
+                            "fldA3KBmmA2lvdrmM": {
+                              "mode": "edit"
+                            },
+                            "fldQ1z733g2QpfG9H": {
+                              "mode": "chose"
+                            },
+                            "fldTpIBKulLwD05p4": {
+                              "mode": "edit"
+                            },
+                            "fldUoMOm8Wvk47krk": {
+                              "mode": "edit"
+                            },
+                            "fldUtNB1dDORw9BWw": {
+                              "mode": "edit"
+                            },
+                            "fldfu3B5JGQ96o5Qd": {
+                              "mode": "chose"
+                            },
+                            "fldjnPyKqybJj9VeG": {
+                              "mode": "edit"
+                            },
+                            "fldl98BClCcxf4SxV": {
+                              "mode": "edit"
+                            },
+                            "fldpgCHHmqc3eQ6xq": {
+                              "mode": "chose"
+                            }
+                          }
+                        },
+                        "typecast": {
+                          "mode": "chose"
+                        },
+                        "useColumnId": {
+                          "mode": "chose"
+                        }
+                      },
+                      "parameters": {
+                        "__IMTCONN__": "<CONNECTION_ID>"
+                      }
+                    },
+                    "parameters": [
+                      {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                      }
+                    ],
+                    "expect": [
+                      {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                      },
+                      {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                      },
+                      {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                      },
+                      {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                      },
+                      {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                      },
+                      {
+                        "name": "record",
+                        "spec": [
+                          {
+                            "name": "fldki3RiDMx8wY1n3",
+                            "type": "text",
+                            "label": "Full Name"
+                          },
+                          {
+                            "name": "fldYzIAkyiH77GjSl",
+                            "type": "text",
+                            "label": "Email"
+                          },
+                          {
+                            "name": "fldNuIICirtqKAMim",
+                            "type": "text",
+                            "label": "Phone"
+                          },
+                          {
+                            "name": "fldnNd5Wfds9rQ3zi",
+                            "type": "text",
+                            "label": "Company"
+                          },
+                          {
+                            "name": "fldzRFFqZtBZxzkfz",
+                            "type": "text",
+                            "label": "Lead Source"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldTpIBKulLwD05p4",
+                            "type": "select",
+                            "label": "Service Interest"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldA3KBmmA2lvdrmM",
+                            "type": "select",
+                            "label": "Budget Range"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldUoMOm8Wvk47krk",
+                            "type": "select",
+                            "label": "Timeline"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldjnPyKqybJj9VeG",
+                            "type": "select",
+                            "label": "Preferred Contact Method"
+                          },
+                          {
+                            "name": "fldhIkX4xmRXrKU9t",
+                            "type": "text",
+                            "label": "Original Message"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldl98BClCcxf4SxV",
+                            "type": "select",
+                            "label": "Lead Category"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldUtNB1dDORw9BWw",
+                            "type": "select",
+                            "label": "Priority"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fld8wqAQdB0lKsrae",
+                            "type": "select",
+                            "label": "Lead Status"
+                          },
+                          {
+                            "name": "fldl89tnn6Fl1AFxk",
+                            "type": "text",
+                            "label": "Notes"
+                          },
+                          {
+                            "name": "fldfu3B5JGQ96o5Qd",
+                            "spec": {
+                              "name": "value",
+                              "label": "Record ID"
+                            },
+                            "type": "array",
+                            "label": "AI Drafts 2"
+                          },
+                          {
+                            "name": "fldpgCHHmqc3eQ6xq",
+                            "spec": {
+                              "name": "value",
+                              "label": "Record ID"
+                            },
+                            "type": "array",
+                            "label": "Review & Approval"
+                          },
+                          {
+                            "name": "fldQ1z733g2QpfG9H",
+                            "spec": {
+                              "name": "value",
+                              "label": "Record ID"
+                            },
+                            "type": "array",
+                            "label": "Message Log"
+                          },
+                          {
+                            "name": "fldmRBbHsoxlEZbcF",
+                            "type": "text",
+                            "label": "AI Drafts"
+                          }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                      }
+                    ],
+                    "interface": [
+                      {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                      },
+                      {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                      },
+                      {
+                        "name": "Lead ID",
+                        "type": "number",
+                        "label": "Lead ID"
+                      },
+                      {
+                        "name": "Full Name",
+                        "type": "text",
+                        "label": "Full Name"
+                      },
+                      {
+                        "name": "Email",
+                        "type": "text",
+                        "label": "Email"
+                      },
+                      {
+                        "name": "Phone",
+                        "type": "text",
+                        "label": "Phone"
+                      },
+                      {
+                        "name": "Company",
+                        "type": "text",
+                        "label": "Company"
+                      },
+                      {
+                        "name": "Lead Source",
+                        "type": "text",
+                        "label": "Lead Source"
+                      },
+                      {
+                        "name": "Service Interest",
+                        "type": "text",
+                        "label": "Service Interest"
+                      },
+                      {
+                        "name": "Budget Range",
+                        "type": "text",
+                        "label": "Budget Range"
+                      },
+                      {
+                        "name": "Timeline",
+                        "type": "text",
+                        "label": "Timeline"
+                      },
+                      {
+                        "name": "Preferred Contact Method",
+                        "type": "text",
+                        "label": "Preferred Contact Method"
+                      },
+                      {
+                        "name": "Original Message",
+                        "type": "text",
+                        "label": "Original Message",
+                        "multiline": true
+                      },
+                      {
+                        "name": "Lead Category",
+                        "type": "text",
+                        "label": "Lead Category"
+                      },
+                      {
+                        "name": "Priority",
+                        "type": "text",
+                        "label": "Priority"
+                      },
+                      {
+                        "name": "Lead Status",
+                        "type": "text",
+                        "label": "Lead Status"
+                      },
+                      {
+                        "name": "Created At",
+                        "type": "date",
+                        "label": "Created At"
+                      },
+                      {
+                        "name": "Notes",
+                        "type": "text",
+                        "label": "Notes",
+                        "multiline": true
+                      },
+                      {
+                        "name": "AI Drafts 2",
+                        "spec": {
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "AI Drafts 2"
+                      },
+                      {
+                        "name": "Review & Approval",
+                        "spec": {
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Review & Approval"
+                      },
+                      {
+                        "name": "Message Log",
+                        "spec": {
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Message Log"
+                      },
+                      {
+                        "name": "AI Drafts",
+                        "type": "text",
+                        "label": "AI Drafts"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 30,
+                  "module": "slack:CreateMessage",
+                  "version": 4,
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  },
+                  "mapper": {
+                    "text": "⚠️ AI drafting failed\n\nLead: {{13.`Full Name`}}\nCompany: {{13.Company}}\nService Interest: {{13.`Service Interest`}}\n\nThe Groq API request failed, so no AI draft was created.\n\nAction needed:\nPlease review the lead manually and create a follow-up response.",
+                    "parse": false,
+                    "mrkdwn": true,
+                    "channel": "<SLACK_CHANNEL_ID>",
+                    "channelType": "public",
+                    "channelWType": "list"
+                  },
+                  "metadata": {
+                    "designer": {
+                      "x": 1800,
+                      "y": 1200
+                    },
+                    "restore": {
+                      "expect": {
+                        "parse": {
+                          "mode": "chose"
+                        },
+                        "mrkdwn": {
+                          "mode": "chose"
+                        },
+                        "channel": {
+                          "mode": "chose",
+                          "label": "admin-alert"
+                        },
+                        "link_names": {
+                          "mode": "chose"
+                        },
+                        "channelType": {
+                          "label": "Public channel"
+                        },
+                        "channelWType": {
+                          "label": "Select from the list"
+                        },
+                        "unfurl_links": {
+                          "mode": "chose"
+                        },
+                        "unfurl_media": {
+                          "mode": "chose"
+                        },
+                        "reply_broadcast": {
+                          "mode": "chose"
+                        }
+                      },
+                      "parameters": {
+                        "__IMTCONN__": "<CONNECTION_ID>"
+                      }
+                    },
+                    "parameters": [
+                      {
+                        "name": "__IMTCONN__",
+                        "type": "account:slack2,slack3",
+                        "label": "Connection",
+                        "required": true
+                      }
+                    ],
+                    "expect": [
+                      {
+                        "name": "channelWType",
+                        "type": "select",
+                        "label": "Enter a channel ID or name",
+                        "required": true,
+                        "validate": {
+                          "enum": [
+                            "manualy",
+                            "list"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "text",
+                        "type": "text",
+                        "label": "Text"
+                      },
+                      {
+                        "name": "blocks",
+                        "type": "text",
+                        "label": "Blocks"
+                      },
+                      {
+                        "name": "thread_ts",
+                        "type": "text",
+                        "label": "Thread message ID (time stamp)"
+                      },
+                      {
+                        "name": "reply_broadcast",
+                        "type": "boolean",
+                        "label": "Reply broadcast"
+                      },
+                      {
+                        "name": "link_names",
+                        "type": "boolean",
+                        "label": "Link names"
+                      },
+                      {
+                        "name": "parse",
+                        "type": "boolean",
+                        "label": "Parse message text"
+                      },
+                      {
+                        "name": "mrkdwn",
+                        "type": "boolean",
+                        "label": "Use markdown"
+                      },
+                      {
+                        "name": "unfurl_links",
+                        "type": "boolean",
+                        "label": "Unfurl primarily text-based content"
+                      },
+                      {
+                        "name": "unfurl_media",
+                        "type": "boolean",
+                        "label": "Unfurl media content"
+                      },
+                      {
+                        "name": "icon_emoji",
+                        "type": "text",
+                        "label": "Icon emoji"
+                      },
+                      {
+                        "name": "icon_url",
+                        "type": "url",
+                        "label": "Icon url"
+                      },
+                      {
+                        "name": "username",
+                        "type": "text",
+                        "label": "User name"
+                      },
+                      {
+                        "name": "channelType",
+                        "type": "select",
+                        "label": "Channel type",
+                        "required": true,
+                        "validate": {
+                          "enum": [
+                            "public",
+                            "private",
+                            "im",
+                            "mpim"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "channel",
+                        "type": "select",
+                        "label": "Public channel",
+                        "required": true
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 31,
+                  "module": "builtin:Break",
+                  "version": 1,
+                  "parameters": {},
+                  "mapper": {
+                    "count": "3",
+                    "retry": true,
+                    "interval": "2"
+                  },
+                  "metadata": {
+                    "designer": {
+                      "x": 2058,
+                      "y": 1245
+                    },
+                    "restore": {
+                      "expect": {
+                        "retry": {
+                          "mode": "chose"
+                        }
+                      }
+                    },
+                    "expect": [
+                      {
+                        "name": "retry",
+                        "type": "boolean",
+                        "label": "Retry automatically",
+                        "required": true
+                      },
+                      {
+                        "name": "count",
+                        "type": "uinteger",
+                        "label": "Number of retries",
+                        "required": true,
+                        "validate": {
+                          "max": 10000,
+                          "min": 1
+                        }
+                      },
+                      {
+                        "name": "interval",
+                        "type": "uinteger",
+                        "label": "Minutes between retries",
+                        "required": true,
+                        "validate": {
+                          "max": 44640,
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "module": "json:ParseJSON",
+              "version": 1,
+              "parameters": {
+                "type": 415854
+              },
+              "mapper": {
+                "json": "{{7.data.choices[].message.content}}"
+              },
+              "metadata": {
+                "designer": {
+                  "x": 1500,
+                  "y": 600
+                },
+                "restore": {
+                  "parameters": {
+                    "type": {
+                      "label": "My data structure"
+                    }
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "type",
+                    "type": "udt",
+                    "label": "Data structure"
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "json",
+                    "type": "text",
+                    "label": "JSON string",
+                    "required": true
+                  }
+                ],
+                "interface": [
+                  {
+                    "help": "",
+                    "name": "category",
+                    "type": "text",
+                    "label": "Category",
+                    "default": null,
+                    "required": false,
+                    "multiline": false
+                  },
+                  {
+                    "help": "",
+                    "name": "priority",
+                    "type": "text",
+                    "label": "Priority",
+                    "default": null,
+                    "required": false,
+                    "multiline": false
+                  },
+                  {
+                    "help": "",
+                    "name": "summary",
+                    "type": "text",
+                    "label": "Summary",
+                    "default": null,
+                    "required": false,
+                    "multiline": false
+                  },
+                  {
+                    "help": "",
+                    "name": "draft_reply",
+                    "type": "text",
+                    "label": "Draft reply",
+                    "default": null,
+                    "required": false,
+                    "multiline": false
+                  },
+                  {
+                    "help": "",
+                    "name": "confidence_notes",
+                    "type": "text",
+                    "label": "Confidence notes",
+                    "default": null,
+                    "required": false,
+                    "multiline": false
+                  }
+                ]
+              },
+              "onerror": [
+                {
+                  "id": 32,
+                  "module": "airtable:ActionUpdateRecords",
+                  "version": 3,
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  },
+                  "mapper": {
+                    "id": "{{13.id}}",
+                    "base": "<AIRTABLE_BASE_ID>",
+                    "table": "<AIRTABLE_TABLE_ID>",
+                    "record": {
+                      "fld8wqAQdB0lKsrae": "Error",
+                      "fldl89tnn6Fl1AFxk": "AI response could not be parsed as valid JSON. Human review required."
+                    },
+                    "typecast": false,
+                    "useColumnId": false
+                  },
+                  "metadata": {
+                    "designer": {
+                      "x": 1800,
+                      "y": 900
+                    },
+                    "restore": {
+                      "expect": {
+                        "base": {
+                          "label": "AI Lead Review & Follow-Up System"
+                        },
+                        "table": {
+                          "label": "Lead"
+                        },
+                        "record": {
+                          "nested": {
+                            "fld8wqAQdB0lKsrae": {
+                              "mode": "edit"
+                            },
+                            "fldA3KBmmA2lvdrmM": {
+                              "mode": "edit"
+                            },
+                            "fldQ1z733g2QpfG9H": {
+                              "mode": "chose"
+                            },
+                            "fldTpIBKulLwD05p4": {
+                              "mode": "edit"
+                            },
+                            "fldUoMOm8Wvk47krk": {
+                              "mode": "edit"
+                            },
+                            "fldUtNB1dDORw9BWw": {
+                              "mode": "edit"
+                            },
+                            "fldfu3B5JGQ96o5Qd": {
+                              "mode": "chose"
+                            },
+                            "fldjnPyKqybJj9VeG": {
+                              "mode": "edit"
+                            },
+                            "fldl98BClCcxf4SxV": {
+                              "mode": "edit"
+                            },
+                            "fldpgCHHmqc3eQ6xq": {
+                              "mode": "chose"
+                            }
+                          }
+                        },
+                        "typecast": {
+                          "mode": "chose"
+                        },
+                        "useColumnId": {
+                          "mode": "chose"
+                        }
+                      },
+                      "parameters": {
+                        "__IMTCONN__": "<CONNECTION_ID>"
+                      }
+                    },
+                    "parameters": [
+                      {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                      }
+                    ],
+                    "expect": [
+                      {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                      },
+                      {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                      },
+                      {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                      },
+                      {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                      },
+                      {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                      },
+                      {
+                        "name": "record",
+                        "spec": [
+                          {
+                            "name": "fldki3RiDMx8wY1n3",
+                            "type": "text",
+                            "label": "Full Name"
+                          },
+                          {
+                            "name": "fldYzIAkyiH77GjSl",
+                            "type": "text",
+                            "label": "Email"
+                          },
+                          {
+                            "name": "fldNuIICirtqKAMim",
+                            "type": "text",
+                            "label": "Phone"
+                          },
+                          {
+                            "name": "fldnNd5Wfds9rQ3zi",
+                            "type": "text",
+                            "label": "Company"
+                          },
+                          {
+                            "name": "fldzRFFqZtBZxzkfz",
+                            "type": "text",
+                            "label": "Lead Source"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldTpIBKulLwD05p4",
+                            "type": "select",
+                            "label": "Service Interest"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldA3KBmmA2lvdrmM",
+                            "type": "select",
+                            "label": "Budget Range"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldUoMOm8Wvk47krk",
+                            "type": "select",
+                            "label": "Timeline"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldjnPyKqybJj9VeG",
+                            "type": "select",
+                            "label": "Preferred Contact Method"
+                          },
+                          {
+                            "name": "fldhIkX4xmRXrKU9t",
+                            "type": "text",
+                            "label": "Original Message"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldl98BClCcxf4SxV",
+                            "type": "select",
+                            "label": "Lead Category"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fldUtNB1dDORw9BWw",
+                            "type": "select",
+                            "label": "Priority"
+                          },
+                          {
+                            "mode": "edit",
+                            "name": "fld8wqAQdB0lKsrae",
+                            "type": "select",
+                            "label": "Lead Status"
+                          },
+                          {
+                            "name": "fldl89tnn6Fl1AFxk",
+                            "type": "text",
+                            "label": "Notes"
+                          },
+                          {
+                            "name": "fldfu3B5JGQ96o5Qd",
+                            "spec": {
+                              "name": "value",
+                              "label": "Record ID"
+                            },
+                            "type": "array",
+                            "label": "AI Drafts 2"
+                          },
+                          {
+                            "name": "fldpgCHHmqc3eQ6xq",
+                            "spec": {
+                              "name": "value",
+                              "label": "Record ID"
+                            },
+                            "type": "array",
+                            "label": "Review & Approval"
+                          },
+                          {
+                            "name": "fldQ1z733g2QpfG9H",
+                            "spec": {
+                              "name": "value",
+                              "label": "Record ID"
+                            },
+                            "type": "array",
+                            "label": "Message Log"
+                          },
+                          {
+                            "name": "fldmRBbHsoxlEZbcF",
+                            "type": "text",
+                            "label": "AI Drafts"
+                          }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                      }
+                    ],
+                    "interface": [
+                      {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                      },
+                      {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                      },
+                      {
+                        "name": "Lead ID",
+                        "type": "number",
+                        "label": "Lead ID"
+                      },
+                      {
+                        "name": "Full Name",
+                        "type": "text",
+                        "label": "Full Name"
+                      },
+                      {
+                        "name": "Email",
+                        "type": "text",
+                        "label": "Email"
+                      },
+                      {
+                        "name": "Phone",
+                        "type": "text",
+                        "label": "Phone"
+                      },
+                      {
+                        "name": "Company",
+                        "type": "text",
+                        "label": "Company"
+                      },
+                      {
+                        "name": "Lead Source",
+                        "type": "text",
+                        "label": "Lead Source"
+                      },
+                      {
+                        "name": "Service Interest",
+                        "type": "text",
+                        "label": "Service Interest"
+                      },
+                      {
+                        "name": "Budget Range",
+                        "type": "text",
+                        "label": "Budget Range"
+                      },
+                      {
+                        "name": "Timeline",
+                        "type": "text",
+                        "label": "Timeline"
+                      },
+                      {
+                        "name": "Preferred Contact Method",
+                        "type": "text",
+                        "label": "Preferred Contact Method"
+                      },
+                      {
+                        "name": "Original Message",
+                        "type": "text",
+                        "label": "Original Message",
+                        "multiline": true
+                      },
+                      {
+                        "name": "Lead Category",
+                        "type": "text",
+                        "label": "Lead Category"
+                      },
+                      {
+                        "name": "Priority",
+                        "type": "text",
+                        "label": "Priority"
+                      },
+                      {
+                        "name": "Lead Status",
+                        "type": "text",
+                        "label": "Lead Status"
+                      },
+                      {
+                        "name": "Created At",
+                        "type": "date",
+                        "label": "Created At"
+                      },
+                      {
+                        "name": "Notes",
+                        "type": "text",
+                        "label": "Notes",
+                        "multiline": true
+                      },
+                      {
+                        "name": "AI Drafts 2",
+                        "spec": {
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "AI Drafts 2"
+                      },
+                      {
+                        "name": "Review & Approval",
+                        "spec": {
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Review & Approval"
+                      },
+                      {
+                        "name": "Message Log",
+                        "spec": {
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Message Log"
+                      },
+                      {
+                        "name": "AI Drafts",
+                        "type": "text",
+                        "label": "AI Drafts"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 33,
+                  "module": "slack:CreateMessage",
+                  "version": 4,
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  },
+                  "mapper": {
+                    "text": "⚠️ AI response parsing failed\n\nLead: {{13.`Full Name`}}\nCompany: {{13.Company}}\nService Interest: {{13.`Service Interest`}}\n\nThe AI returned a response, but Make could not parse it as valid JSON.\n\nAction needed:\nPlease review the AI output manually or rerun the scenario after checking the prompt.",
+                    "parse": false,
+                    "mrkdwn": true,
+                    "channel": "<SLACK_CHANNEL_ID>",
+                    "channelType": "public",
+                    "channelWType": "list"
+                  },
+                  "metadata": {
+                    "designer": {
+                      "x": 2100,
+                      "y": 900
+                    },
+                    "restore": {
+                      "expect": {
+                        "parse": {
+                          "mode": "chose"
+                        },
+                        "mrkdwn": {
+                          "mode": "chose"
+                        },
+                        "channel": {
+                          "mode": "chose",
+                          "label": "admin-alert"
+                        },
+                        "link_names": {
+                          "mode": "chose"
+                        },
+                        "channelType": {
+                          "label": "Public channel"
+                        },
+                        "channelWType": {
+                          "label": "Select from the list"
+                        },
+                        "unfurl_links": {
+                          "mode": "chose"
+                        },
+                        "unfurl_media": {
+                          "mode": "chose"
+                        },
+                        "reply_broadcast": {
+                          "mode": "chose"
+                        }
+                      },
+                      "parameters": {
+                        "__IMTCONN__": "<CONNECTION_ID>"
+                      }
+                    },
+                    "parameters": [
+                      {
+                        "name": "__IMTCONN__",
+                        "type": "account:slack2,slack3",
+                        "label": "Connection",
+                        "required": true
+                      }
+                    ],
+                    "expect": [
+                      {
+                        "name": "channelWType",
+                        "type": "select",
+                        "label": "Enter a channel ID or name",
+                        "required": true,
+                        "validate": {
+                          "enum": [
+                            "manualy",
+                            "list"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "text",
+                        "type": "text",
+                        "label": "Text"
+                      },
+                      {
+                        "name": "blocks",
+                        "type": "text",
+                        "label": "Blocks"
+                      },
+                      {
+                        "name": "thread_ts",
+                        "type": "text",
+                        "label": "Thread message ID (time stamp)"
+                      },
+                      {
+                        "name": "reply_broadcast",
+                        "type": "boolean",
+                        "label": "Reply broadcast"
+                      },
+                      {
+                        "name": "link_names",
+                        "type": "boolean",
+                        "label": "Link names"
+                      },
+                      {
+                        "name": "parse",
+                        "type": "boolean",
+                        "label": "Parse message text"
+                      },
+                      {
+                        "name": "mrkdwn",
+                        "type": "boolean",
+                        "label": "Use markdown"
+                      },
+                      {
+                        "name": "unfurl_links",
+                        "type": "boolean",
+                        "label": "Unfurl primarily text-based content"
+                      },
+                      {
+                        "name": "unfurl_media",
+                        "type": "boolean",
+                        "label": "Unfurl media content"
+                      },
+                      {
+                        "name": "icon_emoji",
+                        "type": "text",
+                        "label": "Icon emoji"
+                      },
+                      {
+                        "name": "icon_url",
+                        "type": "url",
+                        "label": "Icon url"
+                      },
+                      {
+                        "name": "username",
+                        "type": "text",
+                        "label": "User name"
+                      },
+                      {
+                        "name": "channelType",
+                        "type": "select",
+                        "label": "Channel type",
+                        "required": true,
+                        "validate": {
+                          "enum": [
+                            "public",
+                            "private",
+                            "im",
+                            "mpim"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "channel",
+                        "type": "select",
+                        "label": "Public channel",
+                        "required": true
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 34,
+                  "module": "builtin:Ignore",
+                  "version": 1,
+                  "parameters": {},
+                  "mapper": {},
+                  "metadata": {
+                    "designer": {
+                      "x": 2400,
+                      "y": 900
+                    },
+                    "restore": {}
+                  }
+                }
+              ]
+            },
+            {
+              "id": 28,
+              "module": "airtable:ActionCreateRecord",
+              "version": 3,
+              "parameters": {
+                "__IMTCONN__": "<CONNECTION_ID>"
+              },
+              "filter": null,
+              "mapper": {
+                "base": "<AIRTABLE_BASE_ID>",
+                "table": "<AIRTABLE_TABLE_ID>",
+                "record": {
+                  "fldDZyun9VHDp6XN7": "{{9.confidence_notes}}",
+                  "fldEexFBa4knRHEdp": "{{9.draft_reply}}",
+                  "fldEvUc5V4oplvTB3": "{{9.summary}}",
+                  "fldQp9hG3wTbqkoiU": "{{9.priority}}",
+                  "fldS6s1PTBQgMe1lq": "V1",
+                  "fldpEoWwUsAUziE3v": "intake-v1.0",
+                  "fldpmfvaMWceB5r8V": "{{9.category}}",
+                  "fldxTQu5JGvtXQFfr": [
+                    "{{13.id}}"
+                  ]
+                },
+                "typecast": false,
+                "useColumnId": false
+              },
+              "metadata": {
+                "designer": {
+                  "x": 1800,
+                  "y": 450
+                },
+                "restore": {
+                  "expect": {
+                    "base": {
+                      "label": "AI Lead Review & Follow-Up System"
+                    },
+                    "table": {
+                      "label": "AI Drafts",
+                      "nested": [
+                        {
+                          "name": "record",
+                          "spec": [
+                            {
+                              "name": "fldxTQu5JGvtXQFfr",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "Linked Lead"
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldpmfvaMWceB5r8V",
+                              "type": "select",
+                              "label": "AI Lead Category",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Sales Inquiry",
+                                  "value": "Sales Inquiry"
+                                },
+                                {
+                                  "label": "Support Request",
+                                  "value": "Support Request"
+                                },
+                                {
+                                  "label": "Partnership",
+                                  "value": "Partnership"
+                                },
+                                {
+                                  "label": "Pricing Question",
+                                  "value": "Pricing Question"
+                                },
+                                {
+                                  "label": "Urgent Request",
+                                  "value": "Urgent Request"
+                                },
+                                {
+                                  "label": "Low Priority",
+                                  "value": "Low Priority"
+                                },
+                                {
+                                  "label": "Not Relevant",
+                                  "value": "Not Relevant"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldQp9hG3wTbqkoiU",
+                              "type": "select",
+                              "label": "AI Priority",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "High",
+                                  "value": "High"
+                                },
+                                {
+                                  "label": "Medium",
+                                  "value": "Medium"
+                                },
+                                {
+                                  "label": "Low",
+                                  "value": "Low"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "name": "fldEvUc5V4oplvTB3",
+                              "type": "text",
+                              "label": "AI Summary",
+                              "multiline": true
+                            },
+                            {
+                              "name": "fldEexFBa4knRHEdp",
+                              "type": "text",
+                              "label": "Draft Reply",
+                              "multiline": true
+                            },
+                            {
+                              "name": "fldDZyun9VHDp6XN7",
+                              "type": "text",
+                              "label": "AI Confidence Notes",
+                              "multiline": true
+                            },
+                            {
+                              "name": "fldpEoWwUsAUziE3v",
+                              "type": "text",
+                              "label": "Prompt Version"
+                            },
+                            {
+                              "name": "fld2yAO0MZcsJyy7i",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "Review & Approval"
+                            },
+                            {
+                              "name": "fldMBg4ZgJxqHu2dL",
+                              "type": "text",
+                              "label": "Message Log"
+                            },
+                            {
+                              "name": "fldS6s1PTBQgMe1lq",
+                              "type": "text",
+                              "label": "Draft Version"
+                            },
+                            {
+                              "name": "fldsWGmQjaeHgyxbp",
+                              "type": "text",
+                              "label": "Revision Notes",
+                              "multiline": true
+                            }
+                          ],
+                          "type": "collection",
+                          "label": "Record"
+                        }
+                      ]
+                    },
+                    "record": {
+                      "nested": {
+                        "fld2yAO0MZcsJyy7i": {
+                          "mode": "chose"
+                        },
+                        "fldQp9hG3wTbqkoiU": {
+                          "mode": "edit"
+                        },
+                        "fldpmfvaMWceB5r8V": {
+                          "mode": "edit"
+                        },
+                        "fldxTQu5JGvtXQFfr": {
+                          "mode": "chose",
+                          "items": [
+                            null
+                          ]
+                        }
+                      }
+                    },
+                    "typecast": {
+                      "mode": "chose"
+                    },
+                    "useColumnId": {
+                      "mode": "chose"
+                    }
+                  },
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "__IMTCONN__",
+                    "type": "account:airtable3,airtable2",
+                    "label": "Connection",
+                    "required": true
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "base",
+                    "type": "select",
+                    "label": "Base",
+                    "required": true
+                  },
+                  {
+                    "name": "typecast",
+                    "type": "boolean",
+                    "label": "Smart links",
+                    "required": true
+                  },
+                  {
+                    "name": "useColumnId",
+                    "type": "boolean",
+                    "label": "Use Column ID",
+                    "required": true
+                  },
+                  {
+                    "name": "table",
+                    "type": "select",
+                    "label": "Table",
+                    "required": true
+                  },
+                  {
+                    "name": "record",
+                    "spec": [
+                      {
+                        "name": "fldxTQu5JGvtXQFfr",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Linked Lead"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldpmfvaMWceB5r8V",
+                        "type": "select",
+                        "label": "AI Lead Category"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldQp9hG3wTbqkoiU",
+                        "type": "select",
+                        "label": "AI Priority"
+                      },
+                      {
+                        "name": "fldEvUc5V4oplvTB3",
+                        "type": "text",
+                        "label": "AI Summary"
+                      },
+                      {
+                        "name": "fldEexFBa4knRHEdp",
+                        "type": "text",
+                        "label": "Draft Reply"
+                      },
+                      {
+                        "name": "fldDZyun9VHDp6XN7",
+                        "type": "text",
+                        "label": "AI Confidence Notes"
+                      },
+                      {
+                        "name": "fldpEoWwUsAUziE3v",
+                        "type": "text",
+                        "label": "Prompt Version"
+                      },
+                      {
+                        "name": "fld2yAO0MZcsJyy7i",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Review & Approval"
+                      },
+                      {
+                        "name": "fldMBg4ZgJxqHu2dL",
+                        "type": "text",
+                        "label": "Message Log"
+                      },
+                      {
+                        "name": "fldS6s1PTBQgMe1lq",
+                        "type": "text",
+                        "label": "Draft Version"
+                      },
+                      {
+                        "name": "fldsWGmQjaeHgyxbp",
+                        "type": "text",
+                        "label": "Revision Notes"
+                      }
+                    ],
+                    "type": "collection",
+                    "label": "Record"
+                  }
+                ],
+                "interface": [
+                  {
+                    "name": "id",
+                    "type": "text",
+                    "label": "ID"
+                  },
+                  {
+                    "name": "createdTime",
+                    "type": "date",
+                    "label": "Created Time"
+                  },
+                  {
+                    "name": "Draft ID",
+                    "type": "number",
+                    "label": "Draft ID"
+                  },
+                  {
+                    "name": "Linked Lead",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Linked Lead"
+                  },
+                  {
+                    "name": "AI Lead Category",
+                    "type": "text",
+                    "label": "AI Lead Category"
+                  },
+                  {
+                    "name": "AI Priority",
+                    "type": "text",
+                    "label": "AI Priority"
+                  },
+                  {
+                    "name": "AI Summary",
+                    "type": "text",
+                    "label": "AI Summary",
+                    "multiline": true
+                  },
+                  {
+                    "name": "Draft Reply",
+                    "type": "text",
+                    "label": "Draft Reply",
+                    "multiline": true
+                  },
+                  {
+                    "name": "AI Confidence Notes",
+                    "type": "text",
+                    "label": "AI Confidence Notes",
+                    "multiline": true
+                  },
+                  {
+                    "name": "Prompt Version",
+                    "type": "text",
+                    "label": "Prompt Version"
+                  },
+                  {
+                    "name": "Created At",
+                    "type": "date",
+                    "label": "Created At"
+                  },
+                  {
+                    "name": "Review & Approval",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Review & Approval"
+                  },
+                  {
+                    "name": "Message Log",
+                    "type": "text",
+                    "label": "Message Log"
+                  },
+                  {
+                    "name": "Draft Version",
+                    "type": "text",
+                    "label": "Draft Version"
+                  },
+                  {
+                    "name": "Revision Notes",
+                    "type": "text",
+                    "label": "Revision Notes",
+                    "multiline": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 19,
+              "module": "airtable:ActionCreateRecord",
+              "version": 3,
+              "parameters": {
+                "__IMTCONN__": "<CONNECTION_ID>"
+              },
+              "mapper": {
+                "base": "<AIRTABLE_BASE_ID>",
+                "table": "<AIRTABLE_TABLE_ID>",
+                "record": {
+                  "fld8xaFXmfj4mJBvk": [
+                    "{{28.id}}"
+                  ],
+                  "fldGLolALKODyNjvt": "Pending Review",
+                  "fldH1HA440IFhuYaI": [
+                    "{{13.id}}"
+                  ],
+                  "fldY4OV4KHXrkT5LG": "{{9.draft_reply}}"
+                },
+                "typecast": false,
+                "useColumnId": false
+              },
+              "metadata": {
+                "designer": {
+                  "x": 2100,
+                  "y": 450
+                },
+                "restore": {
+                  "expect": {
+                    "base": {
+                      "label": "AI Lead Review & Follow-Up System"
+                    },
+                    "table": {
+                      "label": "Review & Approval",
+                      "nested": [
+                        {
+                          "name": "record",
+                          "spec": [
+                            {
+                              "name": "fldH1HA440IFhuYaI",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "Linked Lead"
+                            },
+                            {
+                              "name": "fld8xaFXmfj4mJBvk",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "Linked AI Draft"
+                            },
+                            {
+                              "mode": "edit",
+                              "name": "fldGLolALKODyNjvt",
+                              "type": "select",
+                              "label": "Approval Status",
+                              "dynamic": true,
+                              "options": [
+                                {
+                                  "label": "Pending Review",
+                                  "value": "Pending Review"
+                                },
+                                {
+                                  "label": "Approved",
+                                  "value": "Approved"
+                                },
+                                {
+                                  "label": "Needs Edit",
+                                  "value": "Needs Edit"
+                                },
+                                {
+                                  "label": "Rejected",
+                                  "value": "Rejected"
+                                }
+                              ],
+                              "validate": false
+                            },
+                            {
+                              "name": "fldY4OV4KHXrkT5LG",
+                              "type": "text",
+                              "label": "Approved Reply",
+                              "multiline": true
+                            },
+                            {
+                              "name": "fldKGKnbxjp3dtvIQ",
+                              "type": "text",
+                              "label": "Reviewer Notes",
+                              "multiline": true
+                            },
+                            {
+                              "name": "fldPSmDDgjYxxPflo",
+                              "type": "text",
+                              "label": "Reviewed By"
+                            },
+                            {
+                              "name": "fldUe38WgrVJ2WIak",
+                              "time": true,
+                              "type": "date",
+                              "label": "Reviewed At"
+                            },
+                            {
+                              "name": "flddkxZQORQNPmsgs",
+                              "spec": {
+                                "label": "Record ID"
+                              },
+                              "type": "array",
+                              "label": "Message Log"
+                            }
+                          ],
+                          "type": "collection",
+                          "label": "Record"
+                        }
+                      ]
+                    },
+                    "record": {
+                      "nested": {
+                        "fld8xaFXmfj4mJBvk": {
+                          "mode": "chose",
+                          "items": [
+                            null
+                          ]
+                        },
+                        "fldGLolALKODyNjvt": {
+                          "mode": "edit"
+                        },
+                        "fldH1HA440IFhuYaI": {
+                          "mode": "chose",
+                          "items": [
+                            null
+                          ]
+                        },
+                        "flddkxZQORQNPmsgs": {
+                          "mode": "chose"
+                        }
+                      }
+                    },
+                    "typecast": {
+                      "mode": "chose"
+                    },
+                    "useColumnId": {
+                      "mode": "chose"
+                    }
+                  },
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "__IMTCONN__",
+                    "type": "account:airtable3,airtable2",
+                    "label": "Connection",
+                    "required": true
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "base",
+                    "type": "select",
+                    "label": "Base",
+                    "required": true
+                  },
+                  {
+                    "name": "typecast",
+                    "type": "boolean",
+                    "label": "Smart links",
+                    "required": true
+                  },
+                  {
+                    "name": "useColumnId",
+                    "type": "boolean",
+                    "label": "Use Column ID",
+                    "required": true
+                  },
+                  {
+                    "name": "table",
+                    "type": "select",
+                    "label": "Table",
+                    "required": true
+                  },
+                  {
+                    "name": "record",
+                    "spec": [
+                      {
+                        "name": "fldH1HA440IFhuYaI",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Linked Lead"
+                      },
+                      {
+                        "name": "fld8xaFXmfj4mJBvk",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Linked AI Draft"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldGLolALKODyNjvt",
+                        "type": "select",
+                        "label": "Approval Status"
+                      },
+                      {
+                        "name": "fldY4OV4KHXrkT5LG",
+                        "type": "text",
+                        "label": "Approved Reply"
+                      },
+                      {
+                        "name": "fldKGKnbxjp3dtvIQ",
+                        "type": "text",
+                        "label": "Reviewer Notes"
+                      },
+                      {
+                        "name": "fldPSmDDgjYxxPflo",
+                        "type": "text",
+                        "label": "Reviewed By"
+                      },
+                      {
+                        "name": "fldUe38WgrVJ2WIak",
+                        "time": true,
+                        "type": "date",
+                        "label": "Reviewed At"
+                      },
+                      {
+                        "name": "flddkxZQORQNPmsgs",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Message Log"
+                      }
+                    ],
+                    "type": "collection",
+                    "label": "Record"
+                  }
+                ],
+                "interface": [
+                  {
+                    "name": "id",
+                    "type": "text",
+                    "label": "ID"
+                  },
+                  {
+                    "name": "createdTime",
+                    "type": "date",
+                    "label": "Created Time"
+                  },
+                  {
+                    "name": "Review ID",
+                    "type": "number",
+                    "label": "Review ID"
+                  },
+                  {
+                    "name": "Linked Lead",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Linked Lead"
+                  },
+                  {
+                    "name": "Linked AI Draft",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Linked AI Draft"
+                  },
+                  {
+                    "name": "Approval Status",
+                    "type": "text",
+                    "label": "Approval Status"
+                  },
+                  {
+                    "name": "Approved Reply",
+                    "type": "text",
+                    "label": "Approved Reply",
+                    "multiline": true
+                  },
+                  {
+                    "name": "Reviewer Notes",
+                    "type": "text",
+                    "label": "Reviewer Notes",
+                    "multiline": true
+                  },
+                  {
+                    "name": "Reviewed By",
+                    "type": "text",
+                    "label": "Reviewed By"
+                  },
+                  {
+                    "name": "Reviewed At",
+                    "time": true,
+                    "type": "date",
+                    "label": "Reviewed At"
+                  },
+                  {
+                    "name": "Created At",
+                    "type": "date",
+                    "label": "Created At"
+                  },
+                  {
+                    "name": "Message Log",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Message Log"
+                  },
+                  {
+                    "name": "Lead Email",
+                    "type": "array",
+                    "label": "Lead Email"
+                  },
+                  {
+                    "name": "Lead Company",
+                    "type": "array",
+                    "label": "Lead Company"
+                  },
+                  {
+                    "name": "Lead Message",
+                    "type": "array",
+                    "label": "Lead Message"
+                  },
+                  {
+                    "name": "AI Category",
+                    "type": "array",
+                    "label": "AI Category"
+                  },
+                  {
+                    "name": "AI Priority",
+                    "type": "array",
+                    "label": "AI Priority"
+                  },
+                  {
+                    "name": "AI Summary",
+                    "type": "array",
+                    "label": "AI Summary"
+                  },
+                  {
+                    "name": "I Confidence Notes",
+                    "type": "array",
+                    "label": "I Confidence Notes"
+                  },
+                  {
+                    "name": "Preffered Contact",
+                    "type": "array",
+                    "label": "Preffered Contact"
+                  },
+                  {
+                    "name": "Service Interest lead",
+                    "type": "array",
+                    "label": "Service Interest lead"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 24,
+              "module": "slack:CreateMessage",
+              "version": 4,
+              "parameters": {
+                "__IMTCONN__": "<CONNECTION_ID>"
+              },
+              "filter": null,
+              "mapper": {
+                "text": "🔔 New lead ready for review\r\n\r\nLead: {{13.`Full Name`}}\nCompany: {{13.Company}}\r\nService Interest: {{13.`Service Interest`}}\r\nCategory: {{9.category}}\r\nPriority: {{9.priority}}\r\n\r\nAI draft has been created and is waiting for human review in Airtable.\r\n",
+                "parse": false,
+                "mrkdwn": true,
+                "channel": "<SLACK_CHANNEL_ID>",
+                "channelType": "public",
+                "channelWType": "list"
+              },
+              "metadata": {
+                "designer": {
+                  "x": 2400,
+                  "y": 450
+                },
+                "restore": {
+                  "expect": {
+                    "parse": {
+                      "mode": "chose"
+                    },
+                    "mrkdwn": {
+                      "mode": "chose"
+                    },
+                    "channel": {
+                      "mode": "chose",
+                      "label": "lead-review-alerts"
+                    },
+                    "link_names": {
+                      "mode": "chose"
+                    },
+                    "channelType": {
+                      "label": "Public channel"
+                    },
+                    "channelWType": {
+                      "label": "Select from the list"
+                    },
+                    "unfurl_links": {
+                      "mode": "chose"
+                    },
+                    "unfurl_media": {
+                      "mode": "chose"
+                    },
+                    "reply_broadcast": {
+                      "mode": "chose"
+                    }
+                  },
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "__IMTCONN__",
+                    "type": "account:slack2,slack3",
+                    "label": "Connection",
+                    "required": true
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "channelWType",
+                    "type": "select",
+                    "label": "Enter a channel ID or name",
+                    "required": true,
+                    "validate": {
+                      "enum": [
+                        "manualy",
+                        "list"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "text",
+                    "type": "text",
+                    "label": "Text"
+                  },
+                  {
+                    "name": "blocks",
+                    "type": "text",
+                    "label": "Blocks"
+                  },
+                  {
+                    "name": "thread_ts",
+                    "type": "text",
+                    "label": "Thread message ID (time stamp)"
+                  },
+                  {
+                    "name": "reply_broadcast",
+                    "type": "boolean",
+                    "label": "Reply broadcast"
+                  },
+                  {
+                    "name": "link_names",
+                    "type": "boolean",
+                    "label": "Link names"
+                  },
+                  {
+                    "name": "parse",
+                    "type": "boolean",
+                    "label": "Parse message text"
+                  },
+                  {
+                    "name": "mrkdwn",
+                    "type": "boolean",
+                    "label": "Use markdown"
+                  },
+                  {
+                    "name": "unfurl_links",
+                    "type": "boolean",
+                    "label": "Unfurl primarily text-based content"
+                  },
+                  {
+                    "name": "unfurl_media",
+                    "type": "boolean",
+                    "label": "Unfurl media content"
+                  },
+                  {
+                    "name": "icon_emoji",
+                    "type": "text",
+                    "label": "Icon emoji"
+                  },
+                  {
+                    "name": "icon_url",
+                    "type": "url",
+                    "label": "Icon url"
+                  },
+                  {
+                    "name": "username",
+                    "type": "text",
+                    "label": "User name"
+                  },
+                  {
+                    "name": "channelType",
+                    "type": "select",
+                    "label": "Channel type",
+                    "required": true,
+                    "validate": {
+                      "enum": [
+                        "public",
+                        "private",
+                        "im",
+                        "mpim"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "channel",
+                    "type": "select",
+                    "label": "Public channel",
+                    "required": true
+                  }
+                ]
+              },
+              "onerror": [
+                {
+                  "id": 39,
+                  "module": "google-email:sendAnEmail",
+                  "version": 4,
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  },
+                  "filter": null,
+                  "mapper": {
+                    "to": [
+                      "<REDACTED_EMAIL>"
+                    ],
+                    "subject": "New lead ready for review — Slack notification failed",
+                    "bodyType": "collection",
+                    "contents": [
+                      {
+                        "text": "A new lead was processed successfully, but the Slack notification failed.\r\n\r\nLead: {{13.`Full Name`}}\nCompany: {{13.Company}}\nService Interest: {{13.`Service Interest`}}\nCategory: {{9.category}}\nPriority: {{9.priority}}\nThe AI Draft and Review record were created in Airtable.",
+                        "image": {}
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "designer": {
+                      "x": 2700,
+                      "y": 600
+                    },
+                    "restore": {
+                      "expect": {
+                        "cc": {
+                          "mode": "chose"
+                        },
+                        "to": {
+                          "mode": "chose",
+                          "items": [
+                            null
+                          ]
+                        },
+                        "bcc": {
+                          "mode": "chose"
+                        },
+                        "from": {
+                          "mode": "chose"
+                        },
+                        "bodyType": {
+                          "label": "Collection of contents (text, images, etc.)"
+                        },
+                        "contents": {
+                          "mode": "chose",
+                          "items": [
+                            null
+                          ]
+                        },
+                        "signature": {
+                          "mode": "chose"
+                        },
+                        "attachments": {
+                          "mode": "chose"
+                        },
+                        "emailHeaders": {
+                          "mode": "chose"
+                        }
+                      },
+                      "parameters": {
+                        "__IMTCONN__": "<CONNECTION_ID>"
+                      }
+                    },
+                    "parameters": [
+                      {
+                        "name": "__IMTCONN__",
+                        "type": "account:google-email",
+                        "label": "Connection",
+                        "required": true
+                      }
+                    ],
+                    "expect": [
+                      {
+                        "name": "to",
+                        "spec": {
+                          "name": "value",
+                          "type": "email",
+                          "label": "Recipient email address",
+                          "required": true,
+                          "validate": true
+                        },
+                        "type": "array",
+                        "label": "To",
+                        "required": true
+                      },
+                      {
+                        "name": "subject",
+                        "type": "text",
+                        "label": "Subject"
+                      },
+                      {
+                        "name": "bodyType",
+                        "type": "select",
+                        "label": "Body type",
+                        "required": true,
+                        "validate": {
+                          "enum": [
+                            "rawHtml",
+                            "collection"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "attachments",
+                        "spec": {
+                          "name": "value",
+                          "spec": [
+                            {
+                              "name": "filename",
+                              "type": "filename",
+                              "label": "File name",
+                              "required": true,
+                              "semantic": "file:name"
+                            },
+                            {
+                              "name": "data",
+                              "type": "buffer",
+                              "label": "Data",
+                              "required": true,
+                              "semantic": "file:data"
+                            }
+                          ],
+                          "type": "collection",
+                          "label": "Attachment"
+                        },
+                        "type": "array",
+                        "label": "Attachments"
+                      },
+                      {
+                        "name": "from",
+                        "type": "select",
+                        "label": "From"
+                      },
+                      {
+                        "name": "cc",
+                        "spec": {
+                          "name": "value",
+                          "type": "email",
+                          "label": "Recipient email address"
+                        },
+                        "type": "array",
+                        "label": "CC recipients"
+                      },
+                      {
+                        "name": "bcc",
+                        "spec": {
+                          "name": "value",
+                          "type": "email",
+                          "label": "Recipient email address"
+                        },
+                        "type": "array",
+                        "label": "BCC recipients"
+                      },
+                      {
+                        "name": "emailHeaders",
+                        "spec": {
+                          "name": "value",
+                          "spec": [
+                            {
+                              "name": "key",
+                              "type": "text",
+                              "label": "Key",
+                              "required": true
+                            },
+                            {
+                              "name": "value",
+                              "type": "text",
+                              "label": "Value"
+                            }
+                          ],
+                          "type": "collection",
+                          "label": "Email header"
+                        },
+                        "type": "array",
+                        "label": "Additional email headers"
+                      },
+                      {
+                        "name": "contents",
+                        "spec": {
+                          "name": "value",
+                          "spec": [
+                            {
+                              "name": "text",
+                              "type": "text",
+                              "label": "Text"
+                            },
+                            {
+                              "name": "image",
+                              "spec": [
+                                {
+                                  "name": "filename",
+                                  "type": "filename",
+                                  "label": "File name",
+                                  "semantic": "file:name"
+                                },
+                                {
+                                  "name": "data",
+                                  "type": "buffer",
+                                  "label": "Data",
+                                  "semantic": "file:data"
+                                },
+                                {
+                                  "name": "width",
+                                  "type": "uinteger",
+                                  "label": "Width"
+                                },
+                                {
+                                  "name": "height",
+                                  "type": "uinteger",
+                                  "label": "Height"
+                                }
+                              ],
+                              "type": "collection",
+                              "label": "Image"
+                            }
+                          ],
+                          "type": "collection",
+                          "label": "Content"
+                        },
+                        "type": "array",
+                        "label": "Body contents"
+                      },
+                      {
+                        "name": "signature",
+                        "type": "select",
+                        "label": "Signature content"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 37,
+                  "module": "builtin:Resume",
+                  "version": 1,
+                  "metadata": {
+                    "designer": {
+                      "x": 3000,
+                      "y": 600
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": 22,
+              "module": "airtable:ActionUpdateRecords",
+              "version": 3,
+              "parameters": {
+                "__IMTCONN__": "<CONNECTION_ID>"
+              },
+              "mapper": {
+                "id": "{{13.id}}",
+                "base": "<AIRTABLE_BASE_ID>",
+                "table": "<AIRTABLE_TABLE_ID>",
+                "record": {
+                  "fld8wqAQdB0lKsrae": "Pending Review",
+                  "fldUtNB1dDORw9BWw": "{{9.priority}}",
+                  "fldl89tnn6Fl1AFxk": "AI draft created and sent for human review.",
+                  "fldl98BClCcxf4SxV": "{{9.category}}"
+                },
+                "typecast": false,
+                "useColumnId": false
+              },
+              "metadata": {
+                "designer": {
+                  "x": 2700,
+                  "y": 300
+                },
+                "restore": {
+                  "expect": {
+                    "base": {
+                      "label": "AI Lead Review & Follow-Up System"
+                    },
+                    "table": {
+                      "label": "Lead"
+                    },
+                    "record": {
+                      "nested": {
+                        "fld8wqAQdB0lKsrae": {
+                          "mode": "edit"
+                        },
+                        "fldA3KBmmA2lvdrmM": {
+                          "mode": "edit"
+                        },
+                        "fldQ1z733g2QpfG9H": {
+                          "mode": "chose"
+                        },
+                        "fldTpIBKulLwD05p4": {
+                          "mode": "edit"
+                        },
+                        "fldUoMOm8Wvk47krk": {
+                          "mode": "edit"
+                        },
+                        "fldUtNB1dDORw9BWw": {
+                          "mode": "edit"
+                        },
+                        "fldfu3B5JGQ96o5Qd": {
+                          "mode": "chose"
+                        },
+                        "fldjnPyKqybJj9VeG": {
+                          "mode": "edit"
+                        },
+                        "fldl98BClCcxf4SxV": {
+                          "mode": "edit"
+                        },
+                        "fldpgCHHmqc3eQ6xq": {
+                          "mode": "chose"
+                        }
+                      }
+                    },
+                    "typecast": {
+                      "mode": "chose"
+                    },
+                    "useColumnId": {
+                      "mode": "chose"
+                    }
+                  },
+                  "parameters": {
+                    "__IMTCONN__": "<CONNECTION_ID>"
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "__IMTCONN__",
+                    "type": "account:airtable3,airtable2",
+                    "label": "Connection",
+                    "required": true
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "base",
+                    "type": "select",
+                    "label": "Base",
+                    "required": true
+                  },
+                  {
+                    "name": "typecast",
+                    "type": "boolean",
+                    "label": "Smart links",
+                    "required": true
+                  },
+                  {
+                    "name": "useColumnId",
+                    "type": "boolean",
+                    "label": "Use Column ID",
+                    "required": true
+                  },
+                  {
+                    "name": "table",
+                    "type": "select",
+                    "label": "Table",
+                    "required": true
+                  },
+                  {
+                    "name": "id",
+                    "type": "text",
+                    "label": "Record ID",
+                    "required": true
+                  },
+                  {
+                    "name": "record",
+                    "spec": [
+                      {
+                        "name": "fldki3RiDMx8wY1n3",
+                        "type": "text",
+                        "label": "Full Name"
+                      },
+                      {
+                        "name": "fldYzIAkyiH77GjSl",
+                        "type": "text",
+                        "label": "Email"
+                      },
+                      {
+                        "name": "fldNuIICirtqKAMim",
+                        "type": "text",
+                        "label": "Phone"
+                      },
+                      {
+                        "name": "fldnNd5Wfds9rQ3zi",
+                        "type": "text",
+                        "label": "Company"
+                      },
+                      {
+                        "name": "fldzRFFqZtBZxzkfz",
+                        "type": "text",
+                        "label": "Lead Source"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldTpIBKulLwD05p4",
+                        "type": "select",
+                        "label": "Service Interest"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldA3KBmmA2lvdrmM",
+                        "type": "select",
+                        "label": "Budget Range"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldUoMOm8Wvk47krk",
+                        "type": "select",
+                        "label": "Timeline"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldjnPyKqybJj9VeG",
+                        "type": "select",
+                        "label": "Preferred Contact Method"
+                      },
+                      {
+                        "name": "fldhIkX4xmRXrKU9t",
+                        "type": "text",
+                        "label": "Original Message"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldl98BClCcxf4SxV",
+                        "type": "select",
+                        "label": "Lead Category"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fldUtNB1dDORw9BWw",
+                        "type": "select",
+                        "label": "Priority"
+                      },
+                      {
+                        "mode": "edit",
+                        "name": "fld8wqAQdB0lKsrae",
+                        "type": "select",
+                        "label": "Lead Status"
+                      },
+                      {
+                        "name": "fldl89tnn6Fl1AFxk",
+                        "type": "text",
+                        "label": "Notes"
+                      },
+                      {
+                        "name": "fldfu3B5JGQ96o5Qd",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "AI Drafts 2"
+                      },
+                      {
+                        "name": "fldpgCHHmqc3eQ6xq",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Review & Approval"
+                      },
+                      {
+                        "name": "fldQ1z733g2QpfG9H",
+                        "spec": {
+                          "name": "value",
+                          "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Message Log"
+                      },
+                      {
+                        "name": "fldmRBbHsoxlEZbcF",
+                        "type": "text",
+                        "label": "AI Drafts"
+                      }
+                    ],
+                    "type": "collection",
+                    "label": "Record"
+                  }
+                ],
+                "interface": [
+                  {
+                    "name": "id",
+                    "type": "text",
+                    "label": "ID"
+                  },
+                  {
+                    "name": "createdTime",
+                    "type": "date",
+                    "label": "Created Time"
+                  },
+                  {
+                    "name": "Lead ID",
+                    "type": "number",
+                    "label": "Lead ID"
+                  },
+                  {
+                    "name": "Full Name",
+                    "type": "text",
+                    "label": "Full Name"
+                  },
+                  {
+                    "name": "Email",
+                    "type": "text",
+                    "label": "Email"
+                  },
+                  {
+                    "name": "Phone",
+                    "type": "text",
+                    "label": "Phone"
+                  },
+                  {
+                    "name": "Company",
+                    "type": "text",
+                    "label": "Company"
+                  },
+                  {
+                    "name": "Lead Source",
+                    "type": "text",
+                    "label": "Lead Source"
+                  },
+                  {
+                    "name": "Service Interest",
+                    "type": "text",
+                    "label": "Service Interest"
+                  },
+                  {
+                    "name": "Budget Range",
+                    "type": "text",
+                    "label": "Budget Range"
+                  },
+                  {
+                    "name": "Timeline",
+                    "type": "text",
+                    "label": "Timeline"
+                  },
+                  {
+                    "name": "Preferred Contact Method",
+                    "type": "text",
+                    "label": "Preferred Contact Method"
+                  },
+                  {
+                    "name": "Original Message",
+                    "type": "text",
+                    "label": "Original Message",
+                    "multiline": true
+                  },
+                  {
+                    "name": "Lead Category",
+                    "type": "text",
+                    "label": "Lead Category"
+                  },
+                  {
+                    "name": "Priority",
+                    "type": "text",
+                    "label": "Priority"
+                  },
+                  {
+                    "name": "Lead Status",
+                    "type": "text",
+                    "label": "Lead Status"
+                  },
+                  {
+                    "name": "Created At",
+                    "type": "date",
+                    "label": "Created At"
+                  },
+                  {
+                    "name": "Notes",
+                    "type": "text",
+                    "label": "Notes",
+                    "multiline": true
+                  },
+                  {
+                    "name": "AI Drafts 2",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "AI Drafts 2"
+                  },
+                  {
+                    "name": "Review & Approval",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Review & Approval"
+                  },
+                  {
+                    "name": "Message Log",
+                    "spec": {
+                      "label": "Record ID"
+                    },
+                    "type": "array",
+                    "label": "Message Log"
+                  },
+                  {
+                    "name": "AI Drafts",
+                    "type": "text",
+                    "label": "AI Drafts"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": true,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": true,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "eu1.make.com",
+    "notes": [],
+    "sanitization_note": "Public portfolio copy. Connection IDs, webhook IDs, keychain IDs, account emails, Slack channel IDs, and Airtable base/table IDs were replaced with placeholders. Field labels and workflow logic were preserved for documentation."
+  }
+}
