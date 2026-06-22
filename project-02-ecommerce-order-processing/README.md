@@ -567,7 +567,7 @@ The point is that the workflow was designed with business consequences in mind: 
 ## Author
 
 **Mohamed Yousuf Hussein**
-**AI Engineer | Workflow Automation**
+**AI Agentic Engineer | Automation Builder | Workflow Designer**
 
 <p>
   <a href="https://github.com/6302Mohamed">
