@@ -1,34 +1,54 @@
 
+<div align="center">
 
+# Project 02 — E-commerce Order Processing
 
-# Project 02 | E-commerce Order Processing, Invoice Logging & Team Notification
+### Paid order intake, invoice logging, buyer communication, and team notification with Make.com.
 
-A Make.com automation workflow for processing paid e-commerce orders through a webhook, logging structured order and invoice records, sending buyer communication, and notifying internal teams through Slack with Telegram fallback support.
+<p>
+  <img src="https://img.shields.io/badge/Make.com-Scenario%20Builder-6D00CC?style=for-the-badge&logo=make&logoColor=white" />
+  <img src="https://img.shields.io/badge/Webhook-Order%20Intake-black?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Google%20Sheets-Order%20Logging-34A853?style=for-the-badge&logo=googlesheets&logoColor=white" />
+  <img src="https://img.shields.io/badge/Airtable-Invoice%20Records-18BFFF?style=for-the-badge&logo=airtable&logoColor=white" />
+  <img src="https://img.shields.io/badge/Gmail-Buyer%20Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
+  <img src="https://img.shields.io/badge/Slack%20%2B%20Telegram-Team%20Alerts-4A154B?style=for-the-badge" />
+</p>
 
-This project demonstrates how Make.com can be used to connect order intake, operations tracking, finance visibility, customer communication, and team notifications into one automated business workflow.
+<p>
+  <strong>Webhook Intake</strong> ·
+  <strong>Validation</strong> ·
+  <strong>Duplicate Prevention</strong> ·
+  <strong>Invoice Logging</strong> ·
+  <strong>Fallback Alerts</strong>
+</p>
 
-> **Template availability:** A sanitized reference blueprint is included for portfolio purposes. Environment-specific connections, IDs, webhook URLs, and private configuration values were removed or replaced. Manual reconnection and field remapping may be required before reuse.
+[Back to Main Portfolio](../README.md)
+
+</div>
 
 ---
 
 ## Overview
 
-This project was built as a practical business automation workflow for handling paid e-commerce orders in a more structured and reliable way.
+This project is a Make.com automation workflow for processing paid e-commerce orders through a webhook, logging structured order and invoice records, sending buyer communication, and notifying internal teams through Slack with Telegram fallback support.
 
 Instead of treating an order as a single flat record, the workflow separates the process into clear operational stages:
 
-- order intake
-- required data validation
-- duplicate detection
-- order header logging
-- line-item logging
-- invoice record creation
-- buyer communication
-- internal team notification
-- fallback alerting
-- final status updates
+* order intake
+* required data validation
+* duplicate detection
+* order header logging
+* line-item logging
+* invoice record creation
+* buyer communication
+* internal team notification
+* fallback alerting
+* final status updates
 
 The result is a workflow that behaves more like a real internal operations process, not just a simple automation demo.
+
+> **Template availability:** A sanitized reference blueprint is included for portfolio purposes. Environment-specific connections, IDs, webhook URLs, and private configuration values were removed or replaced. Manual reconnection and field remapping may be required before reuse.
+
 
 ---
 
