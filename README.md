@@ -1,139 +1,61 @@
-<p align="center">
+<div align="center">
+
+# Make Automation Projects
+
+### Practical Make.com automation case studies for lead management, e-commerce operations, AI-assisted workflows, and business process automation.
+
+<p>
   <img src="https://img.shields.io/badge/Make.com-Automation-6D00CC?style=for-the-badge&logo=make&logoColor=white" />
-  <img src="https://img.shields.io/badge/AI%20Engineer-Workflow%20Automation-purple?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/CRM%20%26%20Sales-Automation-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/AI%20Workflows-Human--in--the--Loop-purple?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Business%20Operations-Automation-success?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/CRM%20%26%20Sales-Workflow%20Systems-blue?style=for-the-badge" />
 </p>
 
-<h1 align="center">Make Automation Projects</h1>
-
-<p align="center">
-  Practical Make.com automation workflows for CRM, lead generation, sales operations, e-commerce, payments, reporting, customer communication, and AI-assisted business processes.
+<p>
+  <strong>Lead Routing</strong> ·
+  <strong>E-commerce Operations</strong> ·
+  <strong>AI Drafting</strong> ·
+  <strong>Human Review</strong> ·
+  <strong>Error Handling</strong> ·
+  <strong>Audit Logging</strong>
 </p>
 
-<p align="center">
-  Designed, documented, and maintained by <strong>Mohamed Yousuf Hussein</strong>
-</p>
+Designed, documented, and maintained by **Mohamed Yousuf Hussein**
+
+</div>
 
 ---
 
 ## Overview
 
-This repository is a growing portfolio of practical business automation projects built with **Make.com**.
+This repository is a portfolio of practical **Make.com automation projects** designed around real business workflows.
 
-The goal is to show how modern businesses can connect their tools, reduce repetitive manual work, respond faster to customers, organize data, and run cleaner operations without building a full custom software system from scratch.
+The projects show how modern businesses can connect their tools, reduce repetitive manual work, respond faster to customers, organize operational data, and improve visibility across teams without building a full custom software system from scratch.
 
-Each project is documented as a real automation case study with:
+Each project is documented as a case study with:
 
-* workflow purpose
-* connected tools
-* scenario logic
-* business value
-* exported Make.com blueprint
-* workflow notes
-* screenshots where available
-* sanitized public files
+* workflow purpose,
+* connected tools,
+* scenario logic,
+* business value,
+* exported sanitized Make blueprint,
+* screenshots where available,
+* implementation notes,
+* security and sanitization notes.
 
-This repository is useful for recruiters, Upwork clients, founders, and business owners who want to understand how automation can improve daily operations.
-
----
-
-## What I Build with Make.com
-
-I design Make.com workflows that connect business tools and automate daily processes such as:
-
-* CRM automation
-* lead capture and lead routing
-* sales pipeline updates
-* customer onboarding workflows
-* appointment and booking workflows
-* e-commerce order processing
-* invoice and payment tracking
-* Stripe payment workflows
-* Shopify / WooCommerce order workflows
-* email follow-up sequences
-* Slack and Telegram team notifications
-* Google Sheets and Airtable operations systems
-* reporting and dashboard preparation
-* task creation in project management tools
-* support ticket routing
-* document generation and file organization
-* webhook and API integrations
-* AI-assisted email, support, and operations workflows
-* OpenAI / ChatGPT-powered business automations
-* human escalation flows when a workflow needs review
+This repository is useful for recruiters, founders, operators, and clients who want to see practical automation thinking beyond basic “trigger → action” workflows.
 
 ---
 
-## Tools & Platforms I Can Work With
+## Featured Projects
 
-<p>
-  <img src="https://img.shields.io/badge/Make.com-Scenario%20Builder-6D00CC?style=flat-square&logo=make&logoColor=white" />
-  <img src="https://img.shields.io/badge/OpenAI-AI%20Automation-412991?style=flat-square&logo=openai&logoColor=white" />
-  <img src="https://img.shields.io/badge/Google%20Sheets-Data%20Tracking-34A853?style=flat-square&logo=googlesheets&logoColor=white" />
-  <img src="https://img.shields.io/badge/Airtable-Database%20Workflows-18BFFF?style=flat-square&logo=airtable&logoColor=white" />
-  <img src="https://img.shields.io/badge/Slack-Team%20Notifications-4A154B?style=flat-square&logo=slack&logoColor=white" />
-  <img src="https://img.shields.io/badge/Gmail-Email%20Automation-EA4335?style=flat-square&logo=gmail&logoColor=white" />
-  <img src="https://img.shields.io/badge/Stripe-Payment%20Workflows-635BFF?style=flat-square&logo=stripe&logoColor=white" />
-  <img src="https://img.shields.io/badge/Shopify-E--commerce%20Automation-7AB55C?style=flat-square&logo=shopify&logoColor=white" />
-  <img src="https://img.shields.io/badge/HubSpot-CRM%20Automation-FF7A59?style=flat-square&logo=hubspot&logoColor=white" />
-  <img src="https://img.shields.io/badge/Calendly-Booking%20Workflows-006BFF?style=flat-square&logo=calendly&logoColor=white" />
-  <img src="https://img.shields.io/badge/Notion-Operations%20Docs-000000?style=flat-square&logo=notion&logoColor=white" />
-  <img src="https://img.shields.io/badge/Trello-Task%20Automation-0052CC?style=flat-square&logo=trello&logoColor=white" />
-  <img src="https://img.shields.io/badge/Telegram-Business%20Alerts-26A5E4?style=flat-square&logo=telegram&logoColor=white" />
-  <img src="https://img.shields.io/badge/Webhooks-API%20Integrations-black?style=flat-square" />
-</p>
-
-The tools above are examples of platforms commonly used in business automation. The projects in this repository currently use a smaller set of these tools, but the workflow patterns can be extended to many real business systems.
+| Project                                                                                       | Focus                                      | Highlights                                                                      |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------- |
+| [Project 01 — Agency Intake Routing](project-01-agency-intake-routing/)                       | Service request intake and routing         | Form intake, Google Sheets tracking, priority routing, request organization     |
+| [Project 02 — E-commerce Order Processing](project-02-ecommerce-order-processing/)            | Order operations and notifications         | Webhook intake, invoice logging, Gmail confirmation, Slack/Telegram alerts      |
+| [Project 03 — Human-in-the-Loop Lead Safeguard](project-03-human-in-the-loop-lead-safeguard/) | AI-assisted lead review and safe follow-up | Tally, Airtable, Groq, Gmail, Slack, JSON parsing, human approval, message logs |
 
 ---
-
-## Business Problems Automation Can Solve
-
-Many businesses lose time because their tools are disconnected.
-
-Common problems include:
-
-* leads arriving from different sources without proper tracking
-* sales teams forgetting follow-ups
-* customer messages being handled manually
-* orders being copied between tools by hand
-* payments and invoices being checked manually
-* teams not being notified quickly
-* reports being prepared manually every week
-* customer onboarding depending on repeated manual steps
-* managers lacking visibility into daily operations
-* data being duplicated across spreadsheets and apps
-
-Make.com helps solve these problems by connecting tools into automated workflows.
-
----
-
-## Repository Structure
-
-Each project is organized in its own folder.
-
-```
-make-automation-projects/
-│
-├── project-01-agency-intake-routing/
-│   ├── README.md
-│   ├── workflow-notes.md
-│   ├── exported-blueprint.json
-│   └── screenshots/
-│
-├── project-02-ecommerce-order-processing/
-│   ├── README.md
-│   ├── workflow-notes.md
-│   ├── project-02-blueprint-sanitized-reference.json
-│   └── screenshots/
-│
-└── README.md
-```
-
----
-
-## Projects
 
 ## Project 01 — Agency Intake Routing
 
@@ -146,25 +68,27 @@ A Make.com automation workflow for handling incoming agency service requests fro
   <img src="https://img.shields.io/badge/Built%20With-Make.com-6D00CC?style=flat-square&logo=make&logoColor=white" />
 </p>
 
-This project shows how a service-based business can organize incoming requests, track submissions, route work based on business rules, and keep a cleaner intake process.
+This project shows how a service-based business can organize incoming requests, track submissions, route work based on business rules, and create a cleaner intake process.
 
 ### What it demonstrates
 
-* form-based request intake
-* structured request tracking
-* lead or inquiry routing
-* priority-based workflow decisions
-* Google Sheets as a lightweight operations database
-* cleaner visibility for small agency operations
+* form-based request intake,
+* structured request tracking,
+* lead or inquiry routing,
+* priority-based workflow decisions,
+* Google Sheets as a lightweight operations database,
+* cleaner visibility for small agency operations.
 
 ### Example business use cases
 
-* agency client intake
-* service request management
-* lead routing
-* inquiry tracking
-* internal operations tracking
-* small business request management
+* agency client intake,
+* service request management,
+* lead routing,
+* inquiry tracking,
+* internal operations tracking,
+* small business request management.
+
+[View Project 01](project-01-agency-intake-routing/)
 
 ---
 
@@ -186,57 +110,157 @@ This project shows how an online business can receive order data, store records,
 
 ### What it demonstrates
 
-* webhook-based order intake
-* order record management
-* line-item processing
-* invoice logging
-* buyer confirmation email
-* team notification workflow
-* fallback business alerts
-* structured storage across Google Sheets and Airtable
+* webhook-based order intake,
+* order record management,
+* line-item processing,
+* invoice logging,
+* buyer confirmation email,
+* team notification workflow,
+* fallback business alerts,
+* structured storage across Google Sheets and Airtable.
 
 ### Example business use cases
 
-* e-commerce order operations
-* invoice tracking
-* buyer confirmation workflows
-* team notification systems
-* order record management
-* fallback alerts for important business events
-* payment or checkout workflow extensions using tools like Stripe, Shopify, or WooCommerce
+* e-commerce order operations,
+* invoice tracking,
+* buyer confirmation workflows,
+* team notification systems,
+* order record management,
+* fallback alerts for important business events,
+* payment or checkout workflow extensions using tools like Stripe, Shopify, or WooCommerce.
+
+[View Project 02](project-02-ecommerce-order-processing/)
 
 ---
 
-## Why This Portfolio Matters
+## Project 03 — Human-in-the-Loop Lead Safeguard
+
+A human-in-the-loop AI automation system for lead intake, AI-assisted draft generation, human review, safe follow-up processing, and audit logging.
+
+<p>
+  <img src="https://img.shields.io/badge/Use%20Case-AI%20Lead%20Review-purple?style=flat-square" />
+  <img src="https://img.shields.io/badge/Pattern-Human--in--the--Loop-success?style=flat-square" />
+  <img src="https://img.shields.io/badge/Pattern-Lead%20Safeguard-red?style=flat-square" />
+  <img src="https://img.shields.io/badge/Tool-Airtable-18BFFF?style=flat-square&logo=airtable&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tool-Groq-F55036?style=flat-square" />
+  <img src="https://img.shields.io/badge/Tool-Gmail-EA4335?style=flat-square&logo=gmail&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tool-Slack-4A154B?style=flat-square&logo=slack&logoColor=white" />
+  <img src="https://img.shields.io/badge/Built%20With-Make.com-6D00CC?style=flat-square&logo=make&logoColor=white" />
+</p>
+
+This project demonstrates a more advanced automation pattern: AI helps classify leads, summarize requests, draft replies, rewrite drafts, and route rejection decisions, but customer-facing messages are not sent without human approval.
+
+### What it demonstrates
+
+* Tally lead intake,
+* Airtable relational data model,
+* AI draft generation with Groq,
+* structured JSON prompting and parsing,
+* human review and approval workflow,
+* approved email sending through Gmail,
+* manual follow-up queue for WhatsApp and phone,
+* Slack notifications,
+* AI-assisted rejection intent routing,
+* message logging for sent, queued, failed, and cancelled outcomes,
+* production-style error handling,
+* sanitized blueprints and professional documentation.
+
+### Example business use cases
+
+* AI-assisted lead management,
+* sales inquiry review,
+* service business follow-up workflows,
+* human-approved customer communication,
+* CRM intake and triage,
+* AI draft review systems,
+* operations workflows that require safety and audit logs.
+
+[View Project 03](project-03-human-in-the-loop-lead-safeguard/)
+
+---
+
+## What This Portfolio Demonstrates
 
 This repository is designed to show more than basic Make.com usage.
 
-It shows my ability to think through business automation from a practical workflow design perspective:
+It demonstrates the ability to think through business automation from a practical workflow design perspective:
 
-* what business process needs automation
-* which tools need to be connected
-* what information should move between systems
-* what should happen automatically
-* what should be reviewed by a human
-* how teams should be notified
-* how records should be organized
-* how workflows can support real business operations
+* what business process needs automation,
+* which tools should be connected,
+* what data should move between systems,
+* where automation should make decisions,
+* where a human should stay in control,
+* how records should be structured,
+* how teams should be notified,
+* how failed steps should be surfaced,
+* how workflows can support real business operations.
 
-The aim is to build automation that is understandable, useful, and business-friendly.
+The goal is to build automations that are understandable, useful, maintainable, and business-friendly.
+
+---
+
+## Tools & Platforms Covered
+
+<p>
+  <img src="https://img.shields.io/badge/Make.com-Scenario%20Builder-6D00CC?style=flat-square&logo=make&logoColor=white" />
+  <img src="https://img.shields.io/badge/Groq-AI%20Automation-F55036?style=flat-square" />
+  <img src="https://img.shields.io/badge/OpenAI-AI%20Automation-412991?style=flat-square&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google%20Sheets-Data%20Tracking-34A853?style=flat-square&logo=googlesheets&logoColor=white" />
+  <img src="https://img.shields.io/badge/Airtable-Database%20Workflows-18BFFF?style=flat-square&logo=airtable&logoColor=white" />
+  <img src="https://img.shields.io/badge/Slack-Team%20Notifications-4A154B?style=flat-square&logo=slack&logoColor=white" />
+  <img src="https://img.shields.io/badge/Gmail-Email%20Automation-EA4335?style=flat-square&logo=gmail&logoColor=white" />
+  <img src="https://img.shields.io/badge/Telegram-Business%20Alerts-26A5E4?style=flat-square&logo=telegram&logoColor=white" />
+  <img src="https://img.shields.io/badge/Webhooks-API%20Integrations-black?style=flat-square" />
+</p>
+
+The tools above are examples of platforms used across the projects or closely related workflow patterns. These automation patterns can be extended to CRMs, payment systems, e-commerce platforms, booking tools, help desks, and internal operations systems.
+
+---
+
+## Repository Structure
+
+```text
+make-automation-projects/
+│
+├── project-01-agency-intake-routing/
+│   ├── README.md
+│   ├── workflow-notes.md
+│   ├── exported-blueprint.json
+│   └── screenshots/
+│
+├── project-02-ecommerce-order-processing/
+│   ├── README.md
+│   ├── workflow-notes.md
+│   ├── project-02-blueprint-sanitized-reference.json
+│   └── screenshots/
+│
+├── project-03-human-in-the-loop-lead-safeguard/
+│   ├── README.md
+│   ├── blueprints/
+│   ├── docs/
+│   └── screenshots/
+│
+└── README.md
+```
 
 ---
 
 ## Security & Sanitization
 
-Public project files in this repository use sanitized placeholders for sensitive values such as:
+Public project files in this repository use sanitized placeholders for sensitive values.
 
-* email addresses
-* company names
-* private sheet references
-* organization-specific details
-* webhook URLs
-* tokens and connection details
-* internal IDs and private workspace data
+Removed or redacted items may include:
+
+* email addresses,
+* company names,
+* private sheet references,
+* organization-specific details,
+* webhook URLs,
+* tokens and connection details,
+* internal IDs and private workspace data,
+* Airtable base/table/field IDs,
+* Slack workspace/channel identifiers,
+* Make connection identifiers.
 
 Before using any blueprint in production, replace all placeholders with your own environment-specific values and review the workflow logic carefully.
 
@@ -246,27 +270,26 @@ Before using any blueprint in production, replace all placeholders with your own
 
 Planned future additions include:
 
-* CRM automation workflows
-* lead generation and qualification workflows
-* Stripe payment automation examples
-* Shopify or WooCommerce order workflows
-* AI-assisted email and support workflows
-* invoice approval workflows
-* marketing automation workflows
-* reporting and dashboard preparation workflows
-* customer onboarding automations
-* more Make.com case studies
-* n8n versions of selected workflows
-* improved screenshots and documentation
+* CRM automation workflows,
+* lead generation and qualification workflows,
+* Stripe payment automation examples,
+* Shopify or WooCommerce order workflows,
+* AI-assisted email and support workflows,
+* invoice approval workflows,
+* marketing automation workflows,
+* reporting and dashboard preparation workflows,
+* customer onboarding automations,
+* more Make.com case studies,
+* n8n versions of selected workflows,
+* improved screenshots and documentation.
 
 ---
 
-
-## Let's Connect
+## Work With Me
 
 I am open to opportunities involving **AI engineering**, **workflow automation**, and **business process automation**.
 
-If you are a recruiter, founder, or business owner looking for someone who can connect tools, automate operations, and design practical AI-assisted workflows, feel free to reach out.
+If you are a recruiter, founder, or business owner looking for someone who can connect tools, automate operations, and design practical AI-assisted workflows, explore the projects above or reach out through GitHub.
 
 ---
 
