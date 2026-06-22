@@ -1,9 +1,35 @@
+<div align="center">
 
-# Project 01 | Agency Intake Routing
+# Project 01 — Agency Intake Routing
 
-A Make.com automation workflow for processing agency requests submitted through a Google Form connected to Google Sheets.
+### A Make.com workflow for validating, routing, and tracking agency service requests.
 
-This project demonstrates how a service-based business can organize incoming requests, validate submissions, detect possible duplicates, route inquiries based on priority and category, and keep audit-friendly records for operational visibility.
+<p>
+  <img src="https://img.shields.io/badge/Make.com-Scenario%20Builder-6D00CC?style=for-the-badge&logo=make&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google%20Forms-Request%20Intake-7248B9?style=for-the-badge&logo=googleforms&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google%20Sheets-Operations%20Tracking-34A853?style=for-the-badge&logo=googlesheets&logoColor=white" />
+  <img src="https://img.shields.io/badge/Email-Team%20Routing-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
+</p>
+
+<p>
+  <strong>Request Intake</strong> ·
+  <strong>Validation</strong> ·
+  <strong>Duplicate Detection</strong> ·
+  <strong>Priority Routing</strong> ·
+  <strong>Audit Fields</strong>
+</p>
+
+[Back to Portfolio](../README.md)
+
+</div>
+
+---
+
+## Overview
+
+This project is a Make.com automation workflow for processing agency requests submitted through a Google Form connected to Google Sheets.
+
+It demonstrates how a service-based business can organize incoming requests, validate submissions, detect possible duplicates, route inquiries based on priority and category, and maintain audit-friendly records for operational visibility.
 
 > **Template availability:** A sanitized reference blueprint is included for portfolio purposes. Environment-specific emails, sheet references, connection details, and configuration values were removed or replaced. Manual reconnection and remapping may be required before reuse.
 
